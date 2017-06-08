@@ -25,9 +25,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/rpc"
 	"github.com/gizak/termui"
 	"gopkg.in/urfave/cli.v1"
 )

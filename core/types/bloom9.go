@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/crypto"
 )
 
 type bytesBacked interface {

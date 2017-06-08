@@ -27,9 +27,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/internal/jsre"
-	"github.com/ThePleasurable/go-trustmachine/internal/web3ext"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/internal/jsre"
+	"github.com/trust-tech/go-trustmachine/internal/web3ext"
+	"github.com/trust-tech/go-trustmachine/rpc"
 	"github.com/mattn/go-colorable"
 	"github.com/peterh/liner"
 	"github.com/robertkrimen/otto"

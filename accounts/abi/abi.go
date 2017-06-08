@@ -25,7 +25,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 // The ABI holds information about a contract's context and available

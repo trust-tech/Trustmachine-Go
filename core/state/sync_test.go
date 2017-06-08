@@ -21,10 +21,10 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/trie"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/trie"
 )
 
 // testAccount is the data associated with an account used by the state tests.

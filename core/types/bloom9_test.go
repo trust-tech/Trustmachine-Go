@@ -54,7 +54,7 @@ func TestBloom(t *testing.T) {
 import (
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/core/state"
+	"github.com/trust-tech/go-trustmachine/core/state"
 )
 
 func TestBloom9(t *testing.T) {

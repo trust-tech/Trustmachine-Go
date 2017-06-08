@@ -20,13 +20,13 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/consensus/entrustash"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/core/vm"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/event"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/consensus/entrustash"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/core/vm"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 func ExampleGenerateChain() {

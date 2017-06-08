@@ -21,12 +21,12 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
-	whisper "github.com/ThePleasurable/go-trustmachine/whisper/whisperv5"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/rlp"
+	whisper "github.com/trust-tech/go-trustmachine/whisper/whisperv5"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/util"
 )

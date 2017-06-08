@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 // Topic represents a cryptographically secure, probabilistic partial

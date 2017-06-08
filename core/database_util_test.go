@@ -23,13 +23,13 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/crypto/sha3"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/params"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto/sha3"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 // Tests block header storage and retrieval operations.

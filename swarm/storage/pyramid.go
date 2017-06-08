@@ -24,7 +24,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 const (

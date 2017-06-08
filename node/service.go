@@ -19,11 +19,11 @@ package node
 import (
 	"reflect"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/event"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/accounts"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // ServiceContext is a collection of service independent options inherited from

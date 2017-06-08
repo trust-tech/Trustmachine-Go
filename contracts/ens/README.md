@@ -2,7 +2,7 @@
 
 ## Usage
 
-Full documentation for the Trustmachine Name Service [can be found as EIP 137](https://github.com/ThePleasurable/EIPs/issues/137).
+Full documentation for the Trustmachine Name Service [can be found as EIP 137](https://github.com/trust-tech/EIPs/issues/137).
 This package offers a simple binding that streamlines the registration arbitrary utf8 domain names to swarm content hashes.
 
 ## Development

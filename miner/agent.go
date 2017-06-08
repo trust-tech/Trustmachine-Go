@@ -21,8 +21,8 @@ import (
 
 	"sync/atomic"
 
-	"github.com/ThePleasurable/go-trustmachine/consensus"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/consensus"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 type CpuAgent struct {

@@ -22,8 +22,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
 )
 
 func TestBasic(t *testing.T) {

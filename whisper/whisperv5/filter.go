@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 type Filter struct {

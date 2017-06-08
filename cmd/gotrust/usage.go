@@ -22,8 +22,8 @@ import (
 	"io"
 	"sort"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/internal/debug"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/internal/debug"
 	"gopkg.in/urfave/cli.v1"
 )
 

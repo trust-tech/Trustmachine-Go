@@ -21,7 +21,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 func (Address) Generate(rand *rand.Rand, size int) reflect.Value {

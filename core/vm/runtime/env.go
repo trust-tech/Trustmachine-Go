@@ -19,10 +19,10 @@ package runtime
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/core/state"
-	"github.com/ThePleasurable/go-trustmachine/core/vm"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/core/state"
+	"github.com/trust-tech/go-trustmachine/core/vm"
 )
 
 func NewEnv(cfg *Config, state *state.StateDB) *vm.EVM {

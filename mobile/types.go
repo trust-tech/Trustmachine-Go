@@ -23,8 +23,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 // A Nonce is a 64-bit hash which proves (combined with the mix-hash) that

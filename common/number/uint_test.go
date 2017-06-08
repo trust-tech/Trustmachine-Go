@@ -20,7 +20,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 func TestSet(t *testing.T) {

@@ -22,8 +22,8 @@ package node
 import (
 	"reflect"
 
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // NoopService is a trivial implementation of the Service interface.

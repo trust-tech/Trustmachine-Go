@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
 )
 
 type MyType [5]byte

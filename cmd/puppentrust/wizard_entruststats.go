@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // deployEntruststats queries the user for various input on deploying an entruststats

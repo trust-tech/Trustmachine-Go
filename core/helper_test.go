@@ -20,9 +20,9 @@ import (
 	"container/list"
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/event"
 )
 
 // Implement our EntrustTest Manager

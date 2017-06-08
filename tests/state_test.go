@@ -22,7 +22,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 func BenchmarkStateCall1024(b *testing.B) {

@@ -23,13 +23,13 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 // The values in those tests are from the Transaction Tests
-// at github.com/ThePleasurable/tests.
+// at github.com/trust-tech/tests.
 var (
 	emptyTx = NewTransaction(
 		0,

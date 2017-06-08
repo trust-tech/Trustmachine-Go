@@ -22,9 +22,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common/math"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 type diffTest struct {

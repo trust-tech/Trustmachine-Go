@@ -80,7 +80,7 @@ run_image() {
     --rm \
     --hostname "${name}" \
     --name     "${name}" \
-    --volume   "${ROOT}:/go/src/github.com/ThePleasurable/go-trustmachine" \
+    --volume   "${ROOT}:/go/src/github.com/trust-tech/go-trustmachine" \
     --volume   "/var/run/docker.sock:/var/run/docker.sock" \
     ${docker_args} \
     "${name}" \

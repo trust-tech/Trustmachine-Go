@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	whisper "github.com/ThePleasurable/go-trustmachine/whisper/whisperv5"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	whisper "github.com/trust-tech/go-trustmachine/whisper/whisperv5"
 )
 
 const powRequirement = 0.00001

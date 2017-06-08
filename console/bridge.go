@@ -23,8 +23,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/rpc"
 	"github.com/robertkrimen/otto"
 )
 

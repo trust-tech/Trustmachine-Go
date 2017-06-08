@@ -20,10 +20,10 @@ package accounts
 import (
 	"math/big"
 
-	trustmachine "github.com/ThePleasurable/go-trustmachine"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/event"
+	trustmachine "github.com/trust-tech/go-trustmachine"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/event"
 )
 
 // Account represents an Trustmachine account located at a specific location defined

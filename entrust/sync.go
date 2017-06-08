@@ -21,11 +21,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/entrust/downloader"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/entrust/downloader"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
 )
 
 const (

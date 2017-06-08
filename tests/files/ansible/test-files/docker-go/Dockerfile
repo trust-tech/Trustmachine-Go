@@ -1,4 +1,4 @@
-# Adjusted from https://github.com/ThePleasurable/go-trustmachine/blob/develop/Dockerfile
+# Adjusted from https://github.com/trust-tech/go-trustmachine/blob/develop/Dockerfile
 FROM ubuntu:14.04
 
 ## Environment setup
@@ -34,14 +34,14 @@ RUN go install -v
 ADD https://api.github.com/repos/trustmachine/go-trustmachine/git/refs/heads/develop unused.txt 
 
 ## Fetch and install go-trustmachine
-RUN go get -u -v -d github.com/ThePleasurable/go-trustmachine/...
-WORKDIR $GOPATH/src/github.com/ThePleasurable/go-trustmachine
+RUN go get -u -v -d github.com/trust-tech/go-trustmachine/...
+WORKDIR $GOPATH/src/github.com/trust-tech/go-trustmachine
 
 RUN git checkout develop
 RUN git pull
 
 
-RUN ENTRUST_DEPS=$(go list -f '{{.Imports}} {{.TestImports}} {{.XTestImports}}' github.com/ThePleasurable/go-trustmachine/... | sed -e 's/\[//g' | sed -e 's/\]//g' | sed -e 's/C //g'); if [ "$ENTRUST_DEPS" ]; then go get $ENTRUST_DEPS; fi
+RUN ENTRUST_DEPS=$(go list -f '{{.Imports}} {{.TestImports}} {{.XTestImports}}' github.com/trust-tech/go-trustmachine/... | sed -e 's/\[//g' | sed -e 's/\]//g' | sed -e 's/C //g'); if [ "$ENTRUST_DEPS" ]; then go get $ENTRUST_DEPS; fi
 RUN go install -v ./cmd/entrusttest
 
 ENTRYPOINT ["entrusttest"]

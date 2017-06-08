@@ -20,9 +20,9 @@ import (
 	gmath "math"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/math"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 // memoryGasCosts calculates the quadratic gas for memory expansion. It does so

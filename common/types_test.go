@@ -22,7 +22,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
 )
 
 func TestBytesConversion(t *testing.T) {

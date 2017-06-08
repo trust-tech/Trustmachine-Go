@@ -25,15 +25,15 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi/bind"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/entrust"
-	"github.com/ThePleasurable/go-trustmachine/internal/entrustapi"
-	"github.com/ThePleasurable/go-trustmachine/les"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/accounts/abi/bind"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/entrust"
+	"github.com/trust-tech/go-trustmachine/internal/entrustapi"
+	"github.com/trust-tech/go-trustmachine/les"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // Interval to check for new releases
@@ -149,7 +149,7 @@ func (r *ReleaseService) checkVersion() {
 
 		warning := fmt.Sprintf("Client v%d.%d.%d-%x seems older than the latest upstream release v%d.%d.%d-%x",
 			r.config.Major, r.config.Minor, r.config.Patch, r.config.Commit[:4], version.Major, version.Minor, version.Patch, version.Commit[:4])
-		howtofix := fmt.Sprintf("Please check https://github.com/ThePleasurable/go-trustmachine/releases for new releases")
+		howtofix := fmt.Sprintf("Please check https://github.com/trust-tech/go-trustmachine/releases for new releases")
 		separator := strings.Repeat("-", len(warning))
 
 		log.Warn(separator)

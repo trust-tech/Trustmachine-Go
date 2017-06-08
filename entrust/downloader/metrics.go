@@ -19,7 +19,7 @@
 package downloader
 
 import (
-	"github.com/ThePleasurable/go-trustmachine/metrics"
+	"github.com/trust-tech/go-trustmachine/metrics"
 )
 
 var (

@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/event"
 )
 
 func ExampleNewSubscription() {

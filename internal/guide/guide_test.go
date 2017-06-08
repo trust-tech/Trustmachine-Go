@@ -30,8 +30,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/keystore"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/accounts/keystore"
+	"github.com/trust-tech/go-trustmachine/core/types"
 )
 
 // Tests that the account management snippets work correctly.

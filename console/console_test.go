@@ -26,11 +26,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/entrust"
-	"github.com/ThePleasurable/go-trustmachine/internal/jsre"
-	"github.com/ThePleasurable/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/entrust"
+	"github.com/trust-tech/go-trustmachine/internal/jsre"
+	"github.com/trust-tech/go-trustmachine/node"
 )
 
 const (

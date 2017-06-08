@@ -16,7 +16,7 @@
 
 package core
 
-import "github.com/ThePleasurable/go-trustmachine/common"
+import "github.com/trust-tech/go-trustmachine/common"
 
 // BadHashes represent a set of manually tracked bad hashes (usually hard forks)
 var BadHashes = map[common.Hash]bool{

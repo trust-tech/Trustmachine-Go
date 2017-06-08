@@ -15,11 +15,11 @@
 // along with the go-trustmachine library. If not, see <http://www.gnu.org/licenses/>.
 
 // Contains the Whisper protocol Topic element. For formal details please see
-// the specs at https://github.com/ThePleasurable/wiki/wiki/Whisper-PoC-1-Protocol-Spec#topics.
+// the specs at https://github.com/trust-tech/wiki/wiki/Whisper-PoC-1-Protocol-Spec#topics.
 
 package whisperv2
 
-import "github.com/ThePleasurable/go-trustmachine/crypto"
+import "github.com/trust-tech/go-trustmachine/crypto"
 
 // Topic represents a cryptographically secure, probabilistic partial
 // classifications of a message, determined as the first (left) 4 bytes of the

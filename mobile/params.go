@@ -21,9 +21,9 @@ package gotrust
 import (
 	"encoding/json"
 
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discv5"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/p2p/discv5"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 // MainnetGenesis returns the JSON spec to use for the main Trustmachine network. It

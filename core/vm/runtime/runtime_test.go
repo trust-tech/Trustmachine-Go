@@ -21,11 +21,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/state"
-	"github.com/ThePleasurable/go-trustmachine/core/vm"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/accounts/abi"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/state"
+	"github.com/trust-tech/go-trustmachine/core/vm"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
 )
 
 func TestDefaults(t *testing.T) {
@@ -106,7 +106,7 @@ func TestCall(t *testing.T) {
 		byte(vm.RETURN),
 	})
 
-	ret, err := Call(address, nil, &Config{State: state})
+	ret, _, err := Call(address, nil, &Config{State: state})
 	if err != nil {
 		t.Fatal("didn't expect error", err)
 	}

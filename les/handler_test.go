@@ -20,14 +20,14 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/entrust/downloader"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
-	"github.com/ThePleasurable/go-trustmachine/trie"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/entrust/downloader"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/trie"
 )
 
 func expectResponse(r p2p.MsgReader, msgcode, reqID, bv uint64, data interface{}) error {

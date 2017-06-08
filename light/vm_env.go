@@ -20,9 +20,9 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/crypto"
 )
 
 // VMState is a wrapper for the light state that holds the actual context and

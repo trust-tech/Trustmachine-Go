@@ -5699,7 +5699,7 @@ module.exports = Shh;
  * @author Alex Beregszaszi <alex@rtfs.hu>
  * @date 2016
  *
- * Reference: https://github.com/ThePleasurable/go-trustmachine/blob/swarm/internal/web3ext/web3ext.go#L33
+ * Reference: https://github.com/trust-tech/go-trustmachine/blob/swarm/internal/web3ext/web3ext.go#L33
  */
 
 "use strict";

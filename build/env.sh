@@ -10,7 +10,7 @@ fi
 # Create fake Go workspace if it doesn't exist yet.
 workspace="$PWD/build/_workspace"
 root="$PWD"
-entrustdir="$workspace/src/github.com/ThePleasurable"
+entrustdir="$workspace/src/github.com/trust-tech"
 if [ ! -L "$entrustdir/go-trustmachine" ]; then
     mkdir -p "$entrustdir"
     cd "$entrustdir"

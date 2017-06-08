@@ -22,7 +22,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto"
 )
 
 // Tests whether a message can be wrapped without any identity or encryption.

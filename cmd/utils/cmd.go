@@ -26,12 +26,12 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/internal/debug"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/internal/debug"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 const (

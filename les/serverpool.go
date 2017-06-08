@@ -27,13 +27,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common/mclock"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discv5"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/common/mclock"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/p2p/discv5"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 const (

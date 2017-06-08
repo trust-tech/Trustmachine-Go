@@ -24,17 +24,17 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/entrust"
-	"github.com/ThePleasurable/go-trustmachine/entrust/downloader"
-	"github.com/ThePleasurable/go-trustmachine/entrustclient"
-	"github.com/ThePleasurable/go-trustmachine/entruststats"
-	"github.com/ThePleasurable/go-trustmachine/les"
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/p2p/nat"
-	"github.com/ThePleasurable/go-trustmachine/params"
-	whisper "github.com/ThePleasurable/go-trustmachine/whisper/whisperv5"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/entrust"
+	"github.com/trust-tech/go-trustmachine/entrust/downloader"
+	"github.com/trust-tech/go-trustmachine/entrustclient"
+	"github.com/trust-tech/go-trustmachine/entruststats"
+	"github.com/trust-tech/go-trustmachine/les"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p/nat"
+	"github.com/trust-tech/go-trustmachine/params"
+	whisper "github.com/trust-tech/go-trustmachine/whisper/whisperv5"
 )
 
 // NodeConfig represents the collection of configuration values to fine tune the Gotrust

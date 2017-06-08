@@ -21,9 +21,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/entrust/downloader"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/entrust/downloader"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
 )
 
 // Tests that fast sync gets disabled as soon as a real block is successfully

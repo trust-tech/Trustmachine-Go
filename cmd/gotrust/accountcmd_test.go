@@ -173,7 +173,7 @@ Fatal: Failed to unlock account f466859ead1932d743d622cb74fc058882e8648a (could 
 `)
 }
 
-// https://github.com/ThePleasurable/go-trustmachine/issues/1785
+// https://github.com/trust-tech/go-trustmachine/issues/1785
 func TestUnlockFlagMultiIndex(t *testing.T) {
 	datadir := tmpDatadirWithKeystore(t)
 	gotrust := runGotrust(t,

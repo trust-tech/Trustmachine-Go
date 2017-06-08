@@ -25,7 +25,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // faucetDockerfile is the Dockerfile required to build an faucet container to
@@ -38,9 +38,9 @@ ENV GOPATH /go
 
 RUN \
   apk add --update git go make gcc musl-dev ca-certificates linux-headers                             && \
-	mkdir -p $GOPATH/src/github.com/ThePleasurable                                                            && \
-	(cd $GOPATH/src/github.com/ThePleasurable && git clone --depth=1 https://github.com/ThePleasurable/go-trustmachine) && \
-  go build -v github.com/ThePleasurable/go-trustmachine/cmd/faucet                                              && \
+	mkdir -p $GOPATH/src/github.com/trust-tech                                                            && \
+	(cd $GOPATH/src/github.com/trust-tech && git clone --depth=1 https://github.com/trust-tech/go-trustmachine) && \
+  go build -v github.com/trust-tech/go-trustmachine/cmd/faucet                                              && \
   apk del git go make gcc musl-dev linux-headers                                                      && \
   rm -rf $GOPATH && rm -rf /var/cache/apk/*
 

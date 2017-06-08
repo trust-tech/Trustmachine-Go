@@ -21,10 +21,10 @@ import (
 	"os/signal"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/console"
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/console"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/rpc"
 	"gopkg.in/urfave/cli.v1"
 )
 
@@ -40,7 +40,7 @@ var (
 		Description: `
 The Gotrust console is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
-See https://github.com/ThePleasurable/go-trustmachine/wiki/Javascipt-Console.`,
+See https://github.com/trust-tech/go-trustmachine/wiki/Javascipt-Console.`,
 	}
 
 	attachCommand = cli.Command{
@@ -53,7 +53,7 @@ See https://github.com/ThePleasurable/go-trustmachine/wiki/Javascipt-Console.`,
 		Description: `
 The Gotrust console is an interactive shell for the JavaScript runtime environment
 which exposes a node admin interface as well as the Ðapp JavaScript API.
-See https://github.com/ThePleasurable/go-trustmachine/wiki/Javascipt-Console.
+See https://github.com/trust-tech/go-trustmachine/wiki/Javascipt-Console.
 This command allows to open a console on a running gotrust node.`,
 	}
 
@@ -66,7 +66,7 @@ This command allows to open a console on a running gotrust node.`,
 		Category:  "CONSOLE COMMANDS",
 		Description: `
 The JavaScript VM exposes a node admin interface as well as the Ðapp
-JavaScript API. See https://github.com/ThePleasurable/go-trustmachine/wiki/Javascipt-Console`,
+JavaScript API. See https://github.com/trust-tech/go-trustmachine/wiki/Javascipt-Console`,
 	}
 )
 

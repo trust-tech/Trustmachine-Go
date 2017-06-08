@@ -19,8 +19,8 @@ package miner
 import (
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
 )
 
 // noopHeaderRetriever is an implementation of headerRetriever that always

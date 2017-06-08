@@ -21,7 +21,7 @@ package p2p
 import (
 	"net"
 
-	"github.com/ThePleasurable/go-trustmachine/metrics"
+	"github.com/trust-tech/go-trustmachine/metrics"
 )
 
 var (

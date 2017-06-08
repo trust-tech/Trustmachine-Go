@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 	"gopkg.in/urfave/cli.v1"
 )
 

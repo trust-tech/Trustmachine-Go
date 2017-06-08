@@ -2,12 +2,12 @@ Pod::Spec.new do |spec|
   spec.name         = 'Gotrust'
   spec.version      = '{{.Version}}'
   spec.license      = { :type => 'GNU Lesser General Public License, Version 3.0' }
-  spec.homepage     = 'https://github.com/ThePleasurable/go-trustmachine'
+  spec.homepage     = 'https://github.com/trust-tech/go-trustmachine'
   spec.authors      = { {{range .Contributors}}
 		'{{.Name}}' => '{{.Email}}',{{end}}
 	}
   spec.summary      = 'iOS Trustmachine Client'
-  spec.source       = { :git => 'https://github.com/ThePleasurable/go-trustmachine.git', :commit => '{{.Commit}}' }
+  spec.source       = { :git => 'https://github.com/trust-tech/go-trustmachine.git', :commit => '{{.Commit}}' }
 
 	spec.platform = :ios
   spec.ios.deployment_target  = '9.0'

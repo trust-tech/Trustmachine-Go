@@ -21,8 +21,8 @@ package fuse
 import (
 	"bytes"
 	"crypto/rand"
-	"github.com/ThePleasurable/go-trustmachine/swarm/api"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/swarm/api"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 	"io"
 	"io/ioutil"
 	"os"

@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // ensureVirtualHost checks whether a reverse-proxy is running on the specified

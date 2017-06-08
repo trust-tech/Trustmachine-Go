@@ -27,7 +27,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 	"golang.org/x/net/websocket"
 	"gopkg.in/fatih/set.v0"
 )

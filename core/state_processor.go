@@ -19,14 +19,14 @@ package core
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/consensus"
-	"github.com/ThePleasurable/go-trustmachine/consensus/misc"
-	"github.com/ThePleasurable/go-trustmachine/core/state"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/core/vm"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/consensus"
+	"github.com/trust-tech/go-trustmachine/consensus/misc"
+	"github.com/trust-tech/go-trustmachine/core/state"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/core/vm"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 // StateProcessor is a basic Processor, which takes care of transitioning

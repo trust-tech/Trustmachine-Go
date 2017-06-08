@@ -24,13 +24,13 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/math"
-	"github.com/ThePleasurable/go-trustmachine/consensus"
-	"github.com/ThePleasurable/go-trustmachine/consensus/misc"
-	"github.com/ThePleasurable/go-trustmachine/core/state"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/consensus"
+	"github.com/trust-tech/go-trustmachine/consensus/misc"
+	"github.com/trust-tech/go-trustmachine/core/state"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/params"
 	set "gopkg.in/fatih/set.v0"
 )
 
@@ -309,7 +309,7 @@ var (
 // the difficulty that a new block should have when created at time given the
 // parent block's time and difficulty. The calculation uses the Homestead rules.
 func calcDifficultyHomestead(time uint64, parent *types.Header) *big.Int {
-	// https://github.com/ThePleasurable/EIPs/blob/master/EIPS/eip-2.mediawiki
+	// https://github.com/trust-tech/EIPs/blob/master/EIPS/eip-2.mediawiki
 	// algorithm:
 	// diff = (parent_diff +
 	//         (parent_diff / 2048 * max(1 - (block_timestamp - parent_timestamp) // 10, -99))

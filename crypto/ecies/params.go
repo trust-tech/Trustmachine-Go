@@ -42,7 +42,7 @@ import (
 	"fmt"
 	"hash"
 
-	entrustcrypto "github.com/ThePleasurable/go-trustmachine/crypto"
+	entrustcrypto "github.com/trust-tech/go-trustmachine/crypto"
 )
 
 var (

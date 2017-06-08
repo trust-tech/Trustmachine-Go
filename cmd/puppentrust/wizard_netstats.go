@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/log"
 	"github.com/olekukonko/tablewriter"
 )
 

@@ -25,11 +25,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/p2p/nat"
-	"github.com/ThePleasurable/go-trustmachine/p2p/netutil"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/p2p/nat"
+	"github.com/trust-tech/go-trustmachine/p2p/netutil"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 const Version = 4

@@ -21,8 +21,8 @@ package gotrust
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/entrustclient"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/entrustclient"
 )
 
 // TrustmachineClient provides access to the Trustmachine APIs.

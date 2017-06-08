@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/keystore"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/accounts/keystore"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // deployNode creates a new node configuration based on some user input.

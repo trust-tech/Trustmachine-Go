@@ -25,9 +25,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/core/types"
 )
 
 // Tests that verification caches can be correctly generated.

@@ -8,6 +8,6 @@
 
 - name: checkout test repo
   git:
-    repo: https://github.com/ThePleasurable/tests.git 
+    repo: https://github.com/trust-tech/tests.git 
     version: develop
     dest: git

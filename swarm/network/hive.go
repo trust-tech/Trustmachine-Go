@@ -22,12 +22,12 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
-	"github.com/ThePleasurable/go-trustmachine/p2p/netutil"
-	"github.com/ThePleasurable/go-trustmachine/swarm/network/kademlia"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/p2p/netutil"
+	"github.com/trust-tech/go-trustmachine/swarm/network/kademlia"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 )
 
 // Hive is the logistic manager of the swarm

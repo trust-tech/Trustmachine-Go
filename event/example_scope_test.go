@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/event"
 )
 
 // This example demonstrates how SubscriptionScope can be used to control the lifetime of

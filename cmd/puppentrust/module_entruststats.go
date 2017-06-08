@@ -24,7 +24,7 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // entruststatsDockerfile is the Dockerfile required to build an entruststats backend

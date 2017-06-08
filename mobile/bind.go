@@ -22,10 +22,10 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi"
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi/bind"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/accounts/abi"
+	"github.com/trust-tech/go-trustmachine/accounts/abi/bind"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
 )
 
 // Signer is an interaface defining the callback when a contract requires a

@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // deployDashboard queries the user for various input on deploying a web-service

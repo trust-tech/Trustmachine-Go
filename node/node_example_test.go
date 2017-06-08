@@ -20,9 +20,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // SampleService is a trivial network service that can be attached to a node for

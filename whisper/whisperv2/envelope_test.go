@@ -21,8 +21,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/crypto/ecies"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto/ecies"
 )
 
 func TestEnvelopeOpen(t *testing.T) {

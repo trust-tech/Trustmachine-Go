@@ -20,7 +20,7 @@ package fuse
 
 import (
 	"fmt"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 	"os/exec"
 	"runtime"
 	"time"

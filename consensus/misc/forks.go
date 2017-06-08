@@ -19,9 +19,9 @@ package misc
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 // VerifyForkHashes verifies that blocks conforming to network hard-forks do have

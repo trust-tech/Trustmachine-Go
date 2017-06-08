@@ -21,7 +21,7 @@ package whisperv2
 import (
 	"crypto/ecdsa"
 
-	"github.com/ThePleasurable/go-trustmachine/event/filter"
+	"github.com/trust-tech/go-trustmachine/event/filter"
 )
 
 // Filter is used to subscribe to specific types of whisper messages.

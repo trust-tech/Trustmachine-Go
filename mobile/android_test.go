@@ -25,7 +25,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/internal/build"
+	"github.com/trust-tech/go-trustmachine/internal/build"
 )
 
 // androidTestClass is a Java class to do some lightweight tests against the Android
@@ -173,7 +173,7 @@ func TestAndroid(t *testing.T) {
 		}
 	}
 	// Generate the mobile bindings for Gotrust and add the tester class
-	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.trustmachine", "github.com/ThePleasurable/go-trustmachine/mobile")
+	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.trustmachine", "github.com/trust-tech/go-trustmachine/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)

@@ -25,11 +25,11 @@ import (
 	"io/ioutil"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi/bind"
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi/bind/backends"
-	"github.com/ThePleasurable/go-trustmachine/contracts/chequebook/contract"
-	"github.com/ThePleasurable/go-trustmachine/core"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/accounts/abi/bind"
+	"github.com/trust-tech/go-trustmachine/accounts/abi/bind/backends"
+	"github.com/trust-tech/go-trustmachine/contracts/chequebook/contract"
+	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/crypto"
 )
 
 var (

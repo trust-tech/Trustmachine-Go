@@ -23,7 +23,7 @@ import (
 	"math/rand"
 	"reflect"
 
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
 )
 
 const (

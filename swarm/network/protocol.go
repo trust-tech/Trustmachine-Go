@@ -37,13 +37,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/contracts/chequebook"
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
-	bzzswap "github.com/ThePleasurable/go-trustmachine/swarm/services/swap"
-	"github.com/ThePleasurable/go-trustmachine/swarm/services/swap/swap"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/contracts/chequebook"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
+	bzzswap "github.com/trust-tech/go-trustmachine/swarm/services/swap"
+	"github.com/trust-tech/go-trustmachine/swarm/services/swap/swap"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 )
 
 const (

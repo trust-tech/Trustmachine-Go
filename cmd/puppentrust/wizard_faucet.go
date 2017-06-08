@@ -21,8 +21,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/keystore"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/accounts/keystore"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // deployFaucet queries the user for various input on deploying a faucet, after

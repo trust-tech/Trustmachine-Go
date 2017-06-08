@@ -22,8 +22,8 @@ import (
 	"errors"
 	"math/big"
 
-	trustmachine "github.com/ThePleasurable/go-trustmachine"
-	"github.com/ThePleasurable/go-trustmachine/common"
+	trustmachine "github.com/trust-tech/go-trustmachine"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 // Subscription represents an event subscription where events are

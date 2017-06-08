@@ -26,9 +26,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts"
-	"github.com/ThePleasurable/go-trustmachine/event"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/accounts"
+	"github.com/trust-tech/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/log"
 	"github.com/karalabe/hid"
 )
 

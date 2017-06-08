@@ -3,9 +3,9 @@ InstallDir "$InstDir"
 OutFile "${OUTPUTFILE}" # set through command line arguments
 
 # Links for "Add/Remove Programs"
-!define HELPURL "https://github.com/ThePleasurable/go-trustmachine/issues"
-!define UPDATEURL "https://github.com/ThePleasurable/go-trustmachine/releases"
-!define ABOUTURL "https://github.com/ThePleasurable/go-trustmachine#trustmachine-go"
+!define HELPURL "https://github.com/trust-tech/go-trustmachine/issues"
+!define UPDATEURL "https://github.com/trust-tech/go-trustmachine/releases"
+!define ABOUTURL "https://github.com/trust-tech/go-trustmachine#trustmachine-go"
 !define /date NOW "%Y%m%d"
 
 PageEx license
@@ -33,7 +33,7 @@ Section "Gotrust" GOTRUST_IDX
   SimpleFC::AdvAddRule "Gotrust outgoing peers (TCP:30303)" ""  6 2 1 2147483647 1 "$INSTDIR\gotrust.exe" "" "" "Trustmachine" "" 30303 "" ""
   SimpleFC::AdvAddRule "Gotrust UDP discovery (UDP:30303)" "" 17 2 1 2147483647 1 "$INSTDIR\gotrust.exe" "" "" "Trustmachine" "" 30303 "" ""
 
-  # Set default IPC endpoint (https://github.com/ThePleasurable/EIPs/issues/147)
+  # Set default IPC endpoint (https://github.com/trust-tech/EIPs/issues/147)
   ${EnvVarUpdate} $0 "TRUSTMACHINE_SOCKET" "R" "HKLM" "\\.\pipe\gotrust.ipc"
   ${EnvVarUpdate} $0 "TRUSTMACHINE_SOCKET" "A" "HKLM" "\\.\pipe\gotrust.ipc"
 

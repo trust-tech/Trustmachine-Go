@@ -41,7 +41,7 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto"
 )
 
 var dumpEnc bool

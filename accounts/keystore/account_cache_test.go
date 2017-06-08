@@ -28,8 +28,8 @@ import (
 
 	"github.com/cespare/cp"
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ThePleasurable/go-trustmachine/accounts"
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/accounts"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 var (

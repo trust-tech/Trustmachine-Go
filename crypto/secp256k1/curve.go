@@ -37,7 +37,7 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/ThePleasurable/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/common/math"
 )
 
 /*

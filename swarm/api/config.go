@@ -24,11 +24,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/swarm/network"
-	"github.com/ThePleasurable/go-trustmachine/swarm/services/swap"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/swarm/network"
+	"github.com/trust-tech/go-trustmachine/swarm/services/swap"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 )
 
 const (

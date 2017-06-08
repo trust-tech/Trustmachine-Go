@@ -24,9 +24,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/swarm/api"
-	swarm "github.com/ThePleasurable/go-trustmachine/swarm/api/client"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/swarm/api"
+	swarm "github.com/trust-tech/go-trustmachine/swarm/api/client"
 	"gopkg.in/urfave/cli.v1"
 )
 

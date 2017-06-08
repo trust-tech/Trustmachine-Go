@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common/mclock"
+	"github.com/trust-tech/go-trustmachine/common/mclock"
 )
 
 // Subscription represents a stream of events. The carrier of the events is typically a

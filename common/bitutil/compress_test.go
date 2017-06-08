@@ -21,7 +21,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
 )
 
 // Tests that data bitset encoding and decoding works and is bijective.

@@ -19,7 +19,7 @@ package number
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 var tt256 = new(big.Int).Lsh(big.NewInt(1), 256)

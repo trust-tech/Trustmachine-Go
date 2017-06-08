@@ -25,9 +25,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/crypto/sha3"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto/sha3"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
 )
 
 func init() {

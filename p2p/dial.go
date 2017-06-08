@@ -24,9 +24,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
-	"github.com/ThePleasurable/go-trustmachine/p2p/netutil"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/p2p/netutil"
 )
 
 const (

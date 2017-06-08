@@ -19,7 +19,7 @@ package vm
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 func makeStackFunc(pop, push int) stackValidationFunc {

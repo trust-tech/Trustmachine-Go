@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/common/math"
 )
 
 func memorySha3(stack *Stack) *big.Int {

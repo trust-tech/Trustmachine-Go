@@ -19,7 +19,7 @@ package params
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 // TestNetDAOForkBlock is the block number where the DAO hard-fork commences on

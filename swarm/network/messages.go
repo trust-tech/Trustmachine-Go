@@ -21,11 +21,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/contracts/chequebook"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
-	"github.com/ThePleasurable/go-trustmachine/swarm/network/kademlia"
-	"github.com/ThePleasurable/go-trustmachine/swarm/services/swap"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/contracts/chequebook"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/swarm/network/kademlia"
+	"github.com/trust-tech/go-trustmachine/swarm/services/swap"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 )
 
 /*

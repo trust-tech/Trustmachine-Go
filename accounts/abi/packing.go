@@ -19,8 +19,8 @@ package abi
 import (
 	"reflect"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/math"
 )
 
 // packBytesSlice packs the given bytes as [L, V] as the canonical representation

@@ -22,7 +22,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

@@ -17,8 +17,8 @@
 package les
 
 import (
-	"github.com/ThePleasurable/go-trustmachine/metrics"
-	"github.com/ThePleasurable/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/metrics"
+	"github.com/trust-tech/go-trustmachine/p2p"
 )
 
 var (

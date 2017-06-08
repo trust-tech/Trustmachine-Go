@@ -24,8 +24,8 @@ import (
 	"io"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto/sha3"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto/sha3"
 )
 
 type Hasher func() hash.Hash

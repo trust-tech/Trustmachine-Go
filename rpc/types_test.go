@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/common/math"
 )
 
 func TestBlockNumberJSONUnmarshal(t *testing.T) {

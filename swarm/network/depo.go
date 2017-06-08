@@ -22,8 +22,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 )
 
 // Handler for storage/retrieval related protocol requests

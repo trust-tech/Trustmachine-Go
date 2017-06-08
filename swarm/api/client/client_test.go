@@ -25,8 +25,8 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/swarm/api"
-	"github.com/ThePleasurable/go-trustmachine/swarm/testutil"
+	"github.com/trust-tech/go-trustmachine/swarm/api"
+	"github.com/trust-tech/go-trustmachine/swarm/testutil"
 )
 
 // TestClientUploadDownloadRaw test uploading and downloading raw data to swarm

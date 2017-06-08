@@ -23,9 +23,9 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
-	"github.com/ThePleasurable/go-trustmachine/swarm/testutil"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/swarm/testutil"
 )
 
 func TestBzzrGetPath(t *testing.T) {

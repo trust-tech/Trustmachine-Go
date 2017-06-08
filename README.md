@@ -1,19 +1,19 @@
 ## Trustmachine Go
 
-Official golang implementation of the Trustmachine protocol.
+TrustMachine project aims to provide with global trust service and it is built upon thepleasurable's golang implementation of Ethereum protocol.
 
 [![API Reference](
 https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f6c616e672f6764646f3f7374617475732e737667
-)](https://godoc.org/github.com/ThePleasurable/go-trustmachine)
+)](https://godoc.org/github.com/trust-tech/go-trustmachine)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/trustmachine/go-trustmachine?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Automated builds are available for stable releases and the unstable master branch.
-Binary archives are published at https://gotrust.trustmachine.org/downloads/.
+Binary archives are published at https://trust.thepleasurable.com/downloads/.
 
 ## Building the source
 
 For prerequisites and detailed build instructions please read the
-[Installation Instructions](https://github.com/ThePleasurable/go-trustmachine/wiki/Building-Trustmachine)
+[Installation Instructions](https://github.com/trust-tech/go-trustmachine/wiki/Building-Trustmachine)
 on the wiki.
 
 Building gotrust requires both a Go (version 1.7 or later) and a C compiler.
@@ -32,19 +32,19 @@ The go-trustmachine project comes with several wrappers/executables found in the
 
 | Command    | Description |
 |:----------:|-------------|
-| **`gotrust`** | Our main Trustmachine CLI client. It is the entry point into the Trustmachine network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Trustmachine network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gotrust --help` and the [CLI Wiki page](https://github.com/ThePleasurable/go-trustmachine/wiki/Command-Line-Options) for command line options |
-| `abigen` | Source code generator to convert Trustmachine contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Trustmachine contract ABIs](https://github.com/ThePleasurable/wiki/wiki/Trustmachine-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/ThePleasurable/go-trustmachine/wiki/Native-DApps:-Go-bindings-to-Trustmachine-contracts) wiki page for details. |
+| **`gotrust`** | Our main Trustmachine CLI client. It is the entry point into the Trustmachine network (main-, test- or private net), capable of running as a full node (default) archive node (retaining all historical state) or a light node (retrieving data live). It can be used by other processes as a gateway into the Trustmachine network via JSON RPC endpoints exposed on top of HTTP, WebSocket and/or IPC transports. `gotrust --help` and the [CLI Wiki page](https://github.com/trust-tech/go-trustmachine/wiki/Command-Line-Options) for command line options |
+| `abigen` | Source code generator to convert Trustmachine contract definitions into easy to use, compile-time type-safe Go packages. It operates on plain [Trustmachine contract ABIs](https://github.com/trust-tech/wiki/wiki/Trustmachine-Contract-ABI) with expanded functionality if the contract bytecode is also available. However it also accepts Solidity source files, making development much more streamlined. Please see our [Native DApps](https://github.com/trust-tech/go-trustmachine/wiki/Native-DApps:-Go-bindings-to-Trustmachine-contracts) wiki page for details. |
 | `bootnode` | Stripped down version of our Trustmachine client implementation that only takes part in the network node discovery protocol, but does not run any of the higher level application protocols. It can be used as a lightweight bootstrap node to aid in finding peers in private networks. |
-| `disasm` | Bytecode disassembler to convert EVM (Trustmachine Virtual Machine) bytecode into more user friendly assembly-like opcodes (e.g. `echo "6001" | disasm`). For details on the individual opcodes, please see pages 22-30 of the [Trustmachine Yellow Paper](http://gavwood.com/paper.pdf). |
+| `disasm` | Bytecode disassembler to convert EVM (Trustmachine Virtual Machine) bytecode into more user friendly assembly-like opcodes (e.g. `echo "6001" | disasm`). For details on the individual opcodes, please see pages 22-30 of the [Ethereum Yellow Paper](http://gavwood.com/paper.pdf). |
 | `evm` | Developer utility version of the EVM (Trustmachine Virtual Machine) that is capable of running bytecode snippets within a configurable environment and execution mode. Its purpose is to allow insolated, fine-grained debugging of EVM opcodes (e.g. `evm --code 60ff60ff --debug`). |
-| `gotrustrpctest` | Developer utility tool to support our [trustmachine/rpc-test](https://github.com/ThePleasurable/rpc-tests) test suite which validates baseline conformity to the [Trustmachine JSON RPC](https://github.com/ThePleasurable/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/ThePleasurable/rpc-tests/blob/master/README.md) for details. |
-| `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/ThePleasurable/wiki/wiki/RLP)) dumps (data encoding used by the Trustmachine protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
+| `gotrustrpctest` | Developer utility tool to support our [trustmachine/rpc-test](https://github.com/trust-tech/rpc-tests) test suite which validates baseline conformity to the [Trustmachine JSON RPC](https://github.com/trust-tech/wiki/wiki/JSON-RPC) specs. Please see the [test suite's readme](https://github.com/trust-tech/rpc-tests/blob/master/README.md) for details. |
+| `rlpdump` | Developer utility tool to convert binary RLP ([Recursive Length Prefix](https://github.com/trust-tech/wiki/wiki/RLP)) dumps (data encoding used by the Trustmachine protocol both network as well as consensus wise) to user friendlier hierarchical representation (e.g. `rlpdump --hex CE0183FFFFFFC4C304050583616263`). |
 | `swarm`    | swarm daemon and tools. This is the entrypoint for the swarm network. `swarm --help` for command line options and subcommands. See https://swarm-guide.readthedocs.io for swarm documentation. |
 
 ## Running gotrust
 
 Going through all the possible command line flags is out of scope here (please consult our
-[CLI Wiki page](https://github.com/ThePleasurable/go-trustmachine/wiki/Command-Line-Options)), but we've
+[CLI Wiki page](https://github.com/trust-tech/go-trustmachine/wiki/Command-Line-Options)), but we've
 enumerated a few common parameter combos to get you up to speed quickly on how you can run your
 own Gotrust instance.
 
@@ -66,9 +66,9 @@ This command will:
  * Bump the memory allowance of the database to 512MB (`--cache=512`), which can help significantly in
    sync times especially for HDD users. This flag is optional and you can set it as high or as low as
    you'd like, though we'd recommend the 512MB - 2GB range.
- * Start up Gotrust's built-in interactive [JavaScript console](https://github.com/ThePleasurable/go-trustmachine/wiki/JavaScript-Console),
-   (via the trailing `console` subcommand) through which you can invoke all official [`web3` methods](https://github.com/ThePleasurable/wiki/wiki/JavaScript-API)
-   as well as Gotrust's own [management APIs](https://github.com/ThePleasurable/go-trustmachine/wiki/Management-APIs).
+ * Start up Gotrust's built-in interactive [JavaScript console](https://github.com/trust-tech/go-trustmachine/wiki/JavaScript-Console),
+   (via the trailing `console` subcommand) through which you can invoke all official [`web3` methods](https://github.com/trust-tech/wiki/wiki/JavaScript-API)
+   as well as Gotrust's own [management APIs](https://github.com/trust-tech/go-trustmachine/wiki/Management-APIs).
    This too is optional and if you leave it out you can always attach to an already running Gotrust instance
    with `gotrust attach`.
 
@@ -118,8 +118,8 @@ This will start gotrust in fast sync mode with a DB memory allowance of 512MB ju
 
 As a developer, sooner rather than later you'll want to start interacting with Gotrust and the Trustmachine
 network via your own programs and not manually through the console. To aid this, Gotrust has built in
-support for a JSON-RPC based APIs ([standard APIs](https://github.com/ThePleasurable/wiki/wiki/JSON-RPC) and
-[Gotrust specific APIs](https://github.com/ThePleasurable/go-trustmachine/wiki/Management-APIs)). These can be
+support for a JSON-RPC based APIs ([standard APIs](https://github.com/trust-tech/wiki/wiki/JSON-RPC) and
+[Gotrust specific APIs](https://github.com/trust-tech/go-trustmachine/wiki/Management-APIs)). These can be
 exposed via HTTP, WebSockets and IPC (unix sockets on unix based platforms, and named pipes on Windows).
 
 The IPC interface is enabled by default and exposes all the APIs supported by Gotrust, whereas the HTTP
@@ -211,7 +211,7 @@ $ bootnode --genkey=boot.key
 $ bootnode --nodekey=boot.key
 ```
 
-With the bootnode online, it will display an [`enode` URL](https://github.com/ThePleasurable/wiki/wiki/enode-url-format)
+With the bootnode online, it will display an [`enode` URL](https://github.com/trust-tech/wiki/wiki/enode-url-format)
 that other nodes can use to connect to it and exchange peer information. Make sure to replace the
 displayed IP address information (most probably `[::]`) with your externally accessible IP to get the
 actual `enode` URL.
@@ -272,7 +272,7 @@ Please make sure your contributions adhere to our coding guidelines:
  * Commit messages should be prefixed with the package(s) they modify.
    * E.g. "entrust, rpc: make trace configs optional"
 
-Please see the [Developers' Guide](https://github.com/ThePleasurable/go-trustmachine/wiki/Developers'-Guide)
+Please see the [Developers' Guide](https://github.com/trust-tech/go-trustmachine/wiki/Developers'-Guide)
 for more details on configuring your environment, managing project dependencies and testing procedures.
 
 ## License

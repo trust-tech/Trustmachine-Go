@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 )
 
 // ContractRef is a reference to the contract's backing object

@@ -28,10 +28,10 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/math"
-	"github.com/ThePleasurable/go-trustmachine/crypto/sha3"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/crypto/sha3"
+	"github.com/trust-tech/go-trustmachine/rlp"
 )
 
 var (

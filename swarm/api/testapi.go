@@ -17,7 +17,7 @@
 package api
 
 import (
-	"github.com/ThePleasurable/go-trustmachine/swarm/network"
+	"github.com/trust-tech/go-trustmachine/swarm/network"
 )
 
 type Control struct {

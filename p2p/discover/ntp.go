@@ -25,7 +25,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 const (

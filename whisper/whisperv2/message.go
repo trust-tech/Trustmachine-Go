@@ -15,7 +15,7 @@
 // along with the go-trustmachine library. If not, see <http://www.gnu.org/licenses/>.
 
 // Contains the Whisper protocol Message element. For formal details please see
-// the specs at https://github.com/ThePleasurable/wiki/wiki/Whisper-PoC-1-Protocol-Spec#messages.
+// the specs at https://github.com/trust-tech/wiki/wiki/Whisper-PoC-1-Protocol-Spec#messages.
 
 package whisperv2
 
@@ -26,10 +26,10 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/crypto"
-	"github.com/ThePleasurable/go-trustmachine/crypto/ecies"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto/ecies"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 // Message represents an end-user data packet to transmit through the Whisper

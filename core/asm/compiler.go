@@ -23,8 +23,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/common/math"
-	"github.com/ThePleasurable/go-trustmachine/core/vm"
+	"github.com/trust-tech/go-trustmachine/common/math"
+	"github.com/trust-tech/go-trustmachine/core/vm"
 )
 
 // Compiler contains information about the parsed source

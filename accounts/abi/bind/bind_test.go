@@ -26,7 +26,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common"
 	"golang.org/x/tools/imports"
 )
 

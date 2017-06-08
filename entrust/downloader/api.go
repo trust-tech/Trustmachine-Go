@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	trustmachine "github.com/ThePleasurable/go-trustmachine"
-	"github.com/ThePleasurable/go-trustmachine/event"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	trustmachine "github.com/trust-tech/go-trustmachine"
+	"github.com/trust-tech/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // PublicDownloaderAPI provides an API which gives information about the current synchronisation status.

@@ -24,7 +24,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 type brokenLimitedReader struct {

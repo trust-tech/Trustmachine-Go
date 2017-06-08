@@ -21,7 +21,7 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/event"
 )
 
 // Manager is an overarching account manager that can communicate with various

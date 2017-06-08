@@ -9,7 +9,7 @@ RUN apt-get install -qy curl git python2.7 python-pip python-dev
 # this is a workaround, to make sure that docker's cache is invalidated whenever the git repo changes
 ADD https://api.github.com/repos/trustmachine/pytrustmachine/git/refs/heads/develop unused.txt 
 
-RUN git clone --branch develop --recursive https://github.com/ThePleasurable/pytrustmachine.git
+RUN git clone --branch develop --recursive https://github.com/trust-tech/pytrustmachine.git
 
 RUN cd pytrustmachine && curl https://bootstrap.pypa.io/bootstrap-buildout.py | python
 

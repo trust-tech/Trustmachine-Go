@@ -24,8 +24,8 @@ import (
 	"time"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/ThePleasurable/go-trustmachine/p2p/discover"
-	"github.com/ThePleasurable/go-trustmachine/p2p/netutil"
+	"github.com/trust-tech/go-trustmachine/p2p/discover"
+	"github.com/trust-tech/go-trustmachine/p2p/netutil"
 )
 
 func init() {

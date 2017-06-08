@@ -21,7 +21,7 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/core/vm"
+	"github.com/trust-tech/go-trustmachine/core/vm"
 )
 
 // Iterator for disassembled EVM instructions

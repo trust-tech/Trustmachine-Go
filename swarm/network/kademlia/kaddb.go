@@ -24,7 +24,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 type NodeData interface {

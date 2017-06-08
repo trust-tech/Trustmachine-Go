@@ -17,7 +17,7 @@
 // Package bind generates Trustmachine contract Go bindings.
 //
 // Detailed usage document and tutorial available on the go-trustmachine Wiki page:
-// https://github.com/ThePleasurable/go-trustmachine/wiki/Native-DApps:-Go-bindings-to-Trustmachine-contracts
+// https://github.com/trust-tech/go-trustmachine/wiki/Native-DApps:-Go-bindings-to-Trustmachine-contracts
 package bind
 
 import (
@@ -28,7 +28,7 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi"
+	"github.com/trust-tech/go-trustmachine/accounts/abi"
 	"golang.org/x/tools/imports"
 )
 

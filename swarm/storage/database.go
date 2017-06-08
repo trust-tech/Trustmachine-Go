@@ -22,7 +22,7 @@ package storage
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/compression/rle"
+	"github.com/trust-tech/go-trustmachine/compression/rle"
 	"github.com/syndtr/goleveldb/leveldb"
 	"github.com/syndtr/goleveldb/leveldb/iterator"
 	"github.com/syndtr/goleveldb/leveldb/opt"

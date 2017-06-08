@@ -17,7 +17,7 @@
 package fuse
 
 import (
-	"github.com/ThePleasurable/go-trustmachine/swarm/api"
+	"github.com/trust-tech/go-trustmachine/swarm/api"
 	"sync"
 	"time"
 )

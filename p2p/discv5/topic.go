@@ -23,7 +23,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common/mclock"
+	"github.com/trust-tech/go-trustmachine/common/mclock"
 )
 
 const (

@@ -17,8 +17,8 @@
 package core
 
 import (
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/core/types"
 )
 
 // TxPreEvent is posted when a transaction enters the transaction pool.

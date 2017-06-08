@@ -16,7 +16,7 @@
 
 package entrustclient
 
-import "github.com/ThePleasurable/go-trustmachine"
+import "github.com/trust-tech/go-trustmachine"
 
 // Verify that Client implements the trustmachine interfaces.
 var (

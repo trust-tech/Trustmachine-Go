@@ -26,10 +26,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/internal/browser"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/cmd/internal/browser"
+	"github.com/trust-tech/go-trustmachine/params"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
 	cli "gopkg.in/urfave/cli.v1"
 )
 
@@ -41,7 +41,7 @@ var bugCommand = cli.Command{
 	Category:  "MISCELLANEOUS COMMANDS",
 }
 
-const issueUrl = "https://github.com/ThePleasurable/go-trustmachine/issues/new"
+const issueUrl = "https://github.com/trust-tech/go-trustmachine/issues/new"
 
 // reportBug reports a bug by opening a new URL to the go-trustmachine GH issue
 // tracker and setting default values as the issue body.

@@ -20,13 +20,13 @@ import (
 	"context"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine"
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/internal/entrustapi"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/internal/entrustapi"
+	"github.com/trust-tech/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // ContractBackend implements bind.ContractBackend with direct calls to Trustmachine

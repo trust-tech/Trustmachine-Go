@@ -24,8 +24,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/accounts/abi/bind"
-	"github.com/ThePleasurable/go-trustmachine/common/compiler"
+	"github.com/trust-tech/go-trustmachine/accounts/abi/bind"
+	"github.com/trust-tech/go-trustmachine/common/compiler"
 )
 
 var (

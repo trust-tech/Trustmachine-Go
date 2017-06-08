@@ -28,11 +28,11 @@ import (
 
 	cli "gopkg.in/urfave/cli.v1"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	"github.com/ThePleasurable/go-trustmachine/contracts/release"
-	"github.com/ThePleasurable/go-trustmachine/entrust"
-	"github.com/ThePleasurable/go-trustmachine/node"
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	"github.com/trust-tech/go-trustmachine/contracts/release"
+	"github.com/trust-tech/go-trustmachine/entrust"
+	"github.com/trust-tech/go-trustmachine/node"
+	"github.com/trust-tech/go-trustmachine/params"
 	"github.com/naoina/toml"
 )
 

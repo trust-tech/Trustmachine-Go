@@ -25,12 +25,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
-	"github.com/ThePleasurable/go-trustmachine/entrustdb"
-	"github.com/ThePleasurable/go-trustmachine/event"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/core/types"
+	"github.com/trust-tech/go-trustmachine/entrustdb"
+	"github.com/trust-tech/go-trustmachine/event"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 var (
@@ -103,7 +103,7 @@ func (api *PublicFilterAPI) timeoutLoop() {
 // It is part of the filter package because this filter can be used throug the
 // `entrust_getFilterChanges` polling method that is also used for log filters.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_newpendingtransactionfilter
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_newpendingtransactionfilter
 func (api *PublicFilterAPI) NewPendingTransactionFilter() rpc.ID {
 	var (
 		pendingTxs   = make(chan common.Hash)
@@ -169,7 +169,7 @@ func (api *PublicFilterAPI) NewPendingTransactions(ctx context.Context) (*rpc.Su
 // NewBlockFilter creates a filter that fetches blocks that are imported into the chain.
 // It is part of the filter package since polling goes with entrust_getFilterChanges.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_newblockfilter
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_newblockfilter
 func (api *PublicFilterAPI) NewBlockFilter() rpc.ID {
 	var (
 		headers   = make(chan *types.Header)
@@ -289,7 +289,7 @@ type FilterCriteria struct {
 //
 // In case "fromBlock" > "toBlock" an error is returned.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_newfilter
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_newfilter
 func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 	logs := make(chan []*types.Log)
 	logsSub, err := api.events.SubscribeLogs(crit, logs)
@@ -324,7 +324,7 @@ func (api *PublicFilterAPI) NewFilter(crit FilterCriteria) (rpc.ID, error) {
 
 // GetLogs returns logs matching the given argument that are stored within the state.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_getlogs
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_getlogs
 func (api *PublicFilterAPI) GetLogs(ctx context.Context, crit FilterCriteria) ([]*types.Log, error) {
 	if crit.FromBlock == nil {
 		crit.FromBlock = big.NewInt(rpc.LatestBlockNumber.Int64())
@@ -345,7 +345,7 @@ func (api *PublicFilterAPI) GetLogs(ctx context.Context, crit FilterCriteria) ([
 
 // UninstallFilter removes the filter with the given filter id.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_uninstallfilter
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_uninstallfilter
 func (api *PublicFilterAPI) UninstallFilter(id rpc.ID) bool {
 	api.filtersMu.Lock()
 	f, found := api.filters[id]
@@ -363,7 +363,7 @@ func (api *PublicFilterAPI) UninstallFilter(id rpc.ID) bool {
 // GetFilterLogs returns the logs for the filter with the given id.
 // If the filter could not be found an empty array of logs is returned.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_getfilterlogs
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_getfilterlogs
 func (api *PublicFilterAPI) GetFilterLogs(ctx context.Context, id rpc.ID) ([]*types.Log, error) {
 	api.filtersMu.Lock()
 	f, found := api.filters[id]
@@ -400,7 +400,7 @@ func (api *PublicFilterAPI) GetFilterLogs(ctx context.Context, id rpc.ID) ([]*ty
 // For pending transaction and block filters the result is []common.Hash.
 // (pending)Log filters return []Log.
 //
-// https://github.com/ThePleasurable/wiki/wiki/JSON-RPC#entrust_getfilterchanges
+// https://github.com/trust-tech/wiki/wiki/JSON-RPC#entrust_getfilterchanges
 func (api *PublicFilterAPI) GetFilterChanges(id rpc.ID) (interface{}, error) {
 	api.filtersMu.Lock()
 	defer api.filtersMu.Unlock()

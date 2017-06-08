@@ -22,9 +22,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/swarm/api"
-	httpapi "github.com/ThePleasurable/go-trustmachine/swarm/api/http"
-	"github.com/ThePleasurable/go-trustmachine/swarm/storage"
+	"github.com/trust-tech/go-trustmachine/swarm/api"
+	httpapi "github.com/trust-tech/go-trustmachine/swarm/api/http"
+	"github.com/trust-tech/go-trustmachine/swarm/storage"
 )
 
 func NewTestSwarmServer(t *testing.T) *TestSwarmServer {

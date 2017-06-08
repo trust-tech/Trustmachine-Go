@@ -23,7 +23,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/common/hexutil"
+	"github.com/trust-tech/go-trustmachine/common/hexutil"
 	"gopkg.in/fatih/set.v0"
 )
 

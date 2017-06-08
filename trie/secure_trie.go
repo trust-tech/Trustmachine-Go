@@ -19,8 +19,8 @@ package trie
 import (
 	"fmt"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/log"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/log"
 )
 
 var secureKeyPrefix = []byte("secure-key-")

@@ -19,9 +19,9 @@ package keystore
 import (
 	"math/big"
 
-	trustmachine "github.com/ThePleasurable/go-trustmachine"
-	"github.com/ThePleasurable/go-trustmachine/accounts"
-	"github.com/ThePleasurable/go-trustmachine/core/types"
+	trustmachine "github.com/trust-tech/go-trustmachine"
+	"github.com/trust-tech/go-trustmachine/accounts"
+	"github.com/trust-tech/go-trustmachine/core/types"
 )
 
 // keystoreWallet implements the accounts.Wallet interface for the original

@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/rlp"
-	"github.com/ThePleasurable/go-trustmachine/trie"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/rlp"
+	"github.com/trust-tech/go-trustmachine/trie"
 )
 
 // NodeIterator is an iterator to traverse the entire state trie post-order,

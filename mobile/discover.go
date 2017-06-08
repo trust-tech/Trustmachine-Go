@@ -22,7 +22,7 @@ package gotrust
 import (
 	"errors"
 
-	"github.com/ThePleasurable/go-trustmachine/p2p/discv5"
+	"github.com/trust-tech/go-trustmachine/p2p/discv5"
 )
 
 // Enode represents a host on the network.

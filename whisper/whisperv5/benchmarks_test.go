@@ -19,7 +19,7 @@ package whisperv5
 import (
 	"testing"
 
-	"github.com/ThePleasurable/go-trustmachine/crypto"
+	"github.com/trust-tech/go-trustmachine/crypto"
 )
 
 func BenchmarkDeriveKeyMaterial(b *testing.B) {

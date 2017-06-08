@@ -22,7 +22,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 // In this example, our client whishes to track the latest 'block number'

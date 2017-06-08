@@ -22,10 +22,10 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/ThePleasurable/go-trustmachine/common"
-	"github.com/ThePleasurable/go-trustmachine/internal/entrustapi"
-	"github.com/ThePleasurable/go-trustmachine/params"
-	"github.com/ThePleasurable/go-trustmachine/rpc"
+	"github.com/trust-tech/go-trustmachine/common"
+	"github.com/trust-tech/go-trustmachine/internal/entrustapi"
+	"github.com/trust-tech/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/rpc"
 )
 
 var maxPrice = big.NewInt(500 * params.Shannon)

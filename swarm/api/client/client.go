@@ -33,7 +33,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ThePleasurable/go-trustmachine/swarm/api"
+	"github.com/trust-tech/go-trustmachine/swarm/api"
 )
 
 var (

@@ -22,8 +22,8 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/utils"
-	swarm "github.com/ThePleasurable/go-trustmachine/swarm/api/client"
+	"github.com/trust-tech/go-trustmachine/cmd/utils"
+	swarm "github.com/trust-tech/go-trustmachine/swarm/api/client"
 	"gopkg.in/urfave/cli.v1"
 )
 

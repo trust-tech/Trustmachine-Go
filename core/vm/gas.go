@@ -19,7 +19,7 @@ package vm
 import (
 	"math/big"
 
-	"github.com/ThePleasurable/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/params"
 )
 
 const (

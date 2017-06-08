@@ -21,7 +21,7 @@ package gotrust
 import (
 	"errors"
 
-	"github.com/ThePleasurable/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p"
 )
 
 // NodeInfo represents pi short summary of the information known about the host.

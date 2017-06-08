@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/ThePleasurable/go-trustmachine/cmd/evm/internal/compiler"
+	"github.com/trust-tech/go-trustmachine/cmd/evm/internal/compiler"
 
 	cli "gopkg.in/urfave/cli.v1"
 )

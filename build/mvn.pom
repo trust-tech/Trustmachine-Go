@@ -11,7 +11,7 @@
 
   <name>Android Trustmachine Client</name>
   <description>Android port of the go-trustmachine libraries and node</description>
-  <url>https://github.com/ThePleasurable/go-trustmachine</url>
+  <url>https://github.com/trust-tech/go-trustmachine</url>
   <inceptionYear>2015</inceptionYear>
 
   <licenses>
@@ -48,10 +48,10 @@
 
   <issueManagement>
     <system>GitHub Issues</system>
-    <url>https://github.com/ThePleasurable/go-trustmachine/issues/</url>
+    <url>https://github.com/trust-tech/go-trustmachine/issues/</url>
   </issueManagement>
 
   <scm>
-    <url>https://github.com/ThePleasurable/go-trustmachine</url>
+    <url>https://github.com/trust-tech/go-trustmachine</url>
   </scm>
 </project>
