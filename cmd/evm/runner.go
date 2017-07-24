@@ -73,6 +73,10 @@ func runCmd(ctx *cli.Context) error {
 	glogger := log.NewGlogHandler(log.StreamHandler(os.Stderr, log.TerminalFormat(false)))
 	glogger.Verbosity(log.Lvl(ctx.GlobalInt(VerbosityFlag.Name)))
 	log.Root().SetHandler(glogger)
+	logconfig := &vm.LogConfig{
+		DisableMemory: ctx.GlobalBool(DisableMemoryFlag.Name),
+		DisableStack:  ctx.GlobalBool(DisableStackFlag.Name),
+	}
 
 	var (
 		tracer      vm.Tracer
@@ -82,20 +86,20 @@ func runCmd(ctx *cli.Context) error {
 		sender      = common.StringToAddress("sender")
 	)
 	if ctx.GlobalBool(MachineFlag.Name) {
-		tracer = NewJSONLogger(os.Stdout)
+		tracer = NewJSONLogger(logconfig, os.Stdout)
 	} else if ctx.GlobalBool(DebugFlag.Name) {
-		debugLogger = vm.NewStructLogger(nil)
+		debugLogger = vm.NewStructLogger(logconfig)
 		tracer = debugLogger
 	} else {
-		debugLogger = vm.NewStructLogger(nil)
+		debugLogger = vm.NewStructLogger(logconfig)
 	}
 	if ctx.GlobalString(GenesisFlag.Name) != "" {
 		gen := readGenesis(ctx.GlobalString(GenesisFlag.Name))
 		_, statedb = gen.ToBlock()
 		chainConfig = gen.Config
 	} else {
-		var db, _ = entrustdb.NewMemDatabase()
-		statedb, _ = state.New(common.Hash{}, db)
+		db, _ := entrustdb.NewMemDatabase()
+		statedb, _ = state.New(common.Hash{}, state.NewDatabase(db))
 	}
 	if ctx.GlobalString(SenderFlag.Name) != "" {
 		sender = common.HexToAddress(ctx.GlobalString(SenderFlag.Name))
@@ -184,7 +188,7 @@ func runCmd(ctx *cli.Context) error {
 	execTime := time.Since(tstart)
 
 	if ctx.GlobalBool(DumpFlag.Name) {
-		statedb.Commit(true)
+		statedb.IntermediateRoot(true)
 		fmt.Println(string(statedb.Dump()))
 	}
 

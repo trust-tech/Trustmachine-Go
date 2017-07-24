@@ -31,7 +31,6 @@ import (
 	"github.com/trust-tech/go-trustmachine/entrust/gasprice"
 	"github.com/trust-tech/go-trustmachine/entrustdb"
 	"github.com/trust-tech/go-trustmachine/event"
-	"github.com/trust-tech/go-trustmachine/internal/entrustapi"
 	"github.com/trust-tech/go-trustmachine/params"
 	"github.com/trust-tech/go-trustmachine/rpc"
 )
@@ -81,11 +80,11 @@ func (b *EntrustApiBackend) BlockByNumber(ctx context.Context, blockNr rpc.Block
 	return b.entrust.blockchain.GetBlockByNumber(uint64(blockNr)), nil
 }
 
-func (b *EntrustApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (entrustapi.State, *types.Header, error) {
+func (b *EntrustApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*state.StateDB, *types.Header, error) {
 	// Pending state is only known by the miner
 	if blockNr == rpc.PendingBlockNumber {
 		block, state := b.entrust.miner.Pending()
-		return EntrustApiState{state}, block.Header(), nil
+		return state, block.Header(), nil
 	}
 	// Otherwise resolve the block number and return its state
 	header, err := b.HeaderByNumber(ctx, blockNr)
@@ -93,7 +92,7 @@ func (b *EntrustApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr 
 		return nil, nil, err
 	}
 	stateDb, err := b.entrust.BlockChain().StateAt(header.Root)
-	return EntrustApiState{stateDb}, header, err
+	return stateDb, header, err
 }
 
 func (b *EntrustApiBackend) GetBlock(ctx context.Context, blockHash common.Hash) (*types.Block, error) {
@@ -108,40 +107,27 @@ func (b *EntrustApiBackend) GetTd(blockHash common.Hash) *big.Int {
 	return b.entrust.blockchain.GetTdByHash(blockHash)
 }
 
-func (b *EntrustApiBackend) GetEVM(ctx context.Context, msg core.Message, state entrustapi.State, header *types.Header, vmCfg vm.Config) (*vm.EVM, func() error, error) {
-	statedb := state.(EntrustApiState).state
-	from := statedb.GetOrNewStateObject(msg.From())
-	from.SetBalance(math.MaxBig256)
+func (b *EntrustApiBackend) GetEVM(ctx context.Context, msg core.Message, state *state.StateDB, header *types.Header, vmCfg vm.Config) (*vm.EVM, func() error, error) {
+	state.SetBalance(msg.From(), math.MaxBig256)
 	vmError := func() error { return nil }
 
 	context := core.NewEVMContext(msg, header, b.entrust.BlockChain(), nil)
-	return vm.NewEVM(context, statedb, b.entrust.chainConfig, vmCfg), vmError, nil
+	return vm.NewEVM(context, state, b.entrust.chainConfig, vmCfg), vmError, nil
 }
 
 func (b *EntrustApiBackend) SendTx(ctx context.Context, signedTx *types.Transaction) error {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
-	b.entrust.txPool.SetLocal(signedTx)
-	return b.entrust.txPool.Add(signedTx)
+	return b.entrust.txPool.AddLocal(signedTx)
 }
 
 func (b *EntrustApiBackend) RemoveTx(txHash common.Hash) {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
 	b.entrust.txPool.Remove(txHash)
 }
 
 func (b *EntrustApiBackend) GetPoolTransactions() (types.Transactions, error) {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
 	pending, err := b.entrust.txPool.Pending()
 	if err != nil {
 		return nil, err
 	}
-
 	var txs types.Transactions
 	for _, batch := range pending {
 		txs = append(txs, batch...)
@@ -150,30 +136,18 @@ func (b *EntrustApiBackend) GetPoolTransactions() (types.Transactions, error) {
 }
 
 func (b *EntrustApiBackend) GetPoolTransaction(hash common.Hash) *types.Transaction {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
 	return b.entrust.txPool.Get(hash)
 }
 
 func (b *EntrustApiBackend) GetPoolNonce(ctx context.Context, addr common.Address) (uint64, error) {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
 	return b.entrust.txPool.State().GetNonce(addr), nil
 }
 
 func (b *EntrustApiBackend) Stats() (pending int, queued int) {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
 	return b.entrust.txPool.Stats()
 }
 
 func (b *EntrustApiBackend) TxPoolContent() (map[common.Address]types.Transactions, map[common.Address]types.Transactions) {
-	b.entrust.txMu.Lock()
-	defer b.entrust.txMu.Unlock()
-
 	return b.entrust.TxPool().Content()
 }
 
@@ -199,24 +173,4 @@ func (b *EntrustApiBackend) EventMux() *event.TypeMux {
 
 func (b *EntrustApiBackend) AccountManager() *accounts.Manager {
 	return b.entrust.AccountManager()
-}
-
-type EntrustApiState struct {
-	state *state.StateDB
-}
-
-func (s EntrustApiState) GetBalance(ctx context.Context, addr common.Address) (*big.Int, error) {
-	return s.state.GetBalance(addr), nil
-}
-
-func (s EntrustApiState) GetCode(ctx context.Context, addr common.Address) ([]byte, error) {
-	return s.state.GetCode(addr), nil
-}
-
-func (s EntrustApiState) GetState(ctx context.Context, a common.Address, b common.Hash) (common.Hash, error) {
-	return s.state.GetState(a, b), nil
-}
-
-func (s EntrustApiState) GetNonce(ctx context.Context, addr common.Address) (uint64, error) {
-	return s.state.GetNonce(addr), nil
 }

@@ -44,21 +44,21 @@ func tmpDatadirWithKeystore(t *testing.T) string {
 
 func TestAccountListEmpty(t *testing.T) {
 	gotrust := runGotrust(t, "account", "list")
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 }
 
 func TestAccountList(t *testing.T) {
 	datadir := tmpDatadirWithKeystore(t)
 	gotrust := runGotrust(t, "account", "list", "--datadir", datadir)
-	defer gotrust.expectExit()
+	defer gotrust.ExpectExit()
 	if runtime.GOOS == "windows" {
-		gotrust.expect(`
+		gotrust.Expect(`
 Account #0: {7ef5a6135f1fd6a02593eedc869c6d41d934aef8} keystore://{{.Datadir}}\keystore\UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8
 Account #1: {f466859ead1932d743d622cb74fc058882e8648a} keystore://{{.Datadir}}\keystore\aaa
 Account #2: {289d485d9771714cce91d3393d764e1311907acc} keystore://{{.Datadir}}\keystore\zzz
 `)
 	} else {
-		gotrust.expect(`
+		gotrust.Expect(`
 Account #0: {7ef5a6135f1fd6a02593eedc869c6d41d934aef8} keystore://{{.Datadir}}/keystore/UTC--2016-03-22T12-57-55.920751759Z--7ef5a6135f1fd6a02593eedc869c6d41d934aef8
 Account #1: {f466859ead1932d743d622cb74fc058882e8648a} keystore://{{.Datadir}}/keystore/aaa
 Account #2: {289d485d9771714cce91d3393d764e1311907acc} keystore://{{.Datadir}}/keystore/zzz
@@ -68,20 +68,20 @@ Account #2: {289d485d9771714cce91d3393d764e1311907acc} keystore://{{.Datadir}}/k
 
 func TestAccountNew(t *testing.T) {
 	gotrust := runGotrust(t, "account", "new", "--lightkdf")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 Your new account is locked with a password. Please give a password. Do not forget this password.
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
 Repeat passphrase: {{.InputLine "foobar"}}
 `)
-	gotrust.expectRegexp(`Address: \{[0-9a-f]{40}\}\n`)
+	gotrust.ExpectRegexp(`Address: \{[0-9a-f]{40}\}\n`)
 }
 
 func TestAccountNewBadRepeat(t *testing.T) {
 	gotrust := runGotrust(t, "account", "new", "--lightkdf")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 Your new account is locked with a password. Please give a password. Do not forget this password.
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "somentrusting"}}
@@ -95,8 +95,8 @@ func TestAccountUpdate(t *testing.T) {
 	gotrust := runGotrust(t, "account", "update",
 		"--datadir", datadir, "--lightkdf",
 		"f466859ead1932d743d622cb74fc058882e8648a")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 Unlocking account f466859ead1932d743d622cb74fc058882e8648a | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
@@ -108,8 +108,8 @@ Repeat passphrase: {{.InputLine "foobar2"}}
 
 func TestWalletImport(t *testing.T) {
 	gotrust := runGotrust(t, "wallet", "import", "--lightkdf", "testdata/guswallet.json")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foo"}}
 Address: {d4584b5f6229b7be90727b0fc8c6b91bb427821f}
@@ -123,8 +123,8 @@ Address: {d4584b5f6229b7be90727b0fc8c6b91bb427821f}
 
 func TestWalletImportBadPassword(t *testing.T) {
 	gotrust := runGotrust(t, "wallet", "import", "--lightkdf", "testdata/guswallet.json")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "wrong"}}
 Fatal: could not decrypt key with given passphrase
@@ -137,19 +137,19 @@ func TestUnlockFlag(t *testing.T) {
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--dev",
 		"--unlock", "f466859ead1932d743d622cb74fc058882e8648a",
 		"js", "testdata/empty.js")
-	gotrust.expect(`
+	gotrust.Expect(`
 Unlocking account f466859ead1932d743d622cb74fc058882e8648a | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
 `)
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 
 	wantMessages := []string{
 		"Unlocked account",
 		"=0xf466859ead1932d743d622cb74fc058882e8648a",
 	}
 	for _, m := range wantMessages {
-		if !strings.Contains(gotrust.stderrText(), m) {
+		if !strings.Contains(gotrust.StderrText(), m) {
 			t.Errorf("stderr text does not contain %q", m)
 		}
 	}
@@ -160,8 +160,8 @@ func TestUnlockFlagWrongPassword(t *testing.T) {
 	gotrust := runGotrust(t,
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--dev",
 		"--unlock", "f466859ead1932d743d622cb74fc058882e8648a")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 Unlocking account f466859ead1932d743d622cb74fc058882e8648a | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "wrong1"}}
@@ -180,14 +180,14 @@ func TestUnlockFlagMultiIndex(t *testing.T) {
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--dev",
 		"--unlock", "0,2",
 		"js", "testdata/empty.js")
-	gotrust.expect(`
+	gotrust.Expect(`
 Unlocking account 0 | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
 Unlocking account 2 | Attempt 1/3
 Passphrase: {{.InputLine "foobar"}}
 `)
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 
 	wantMessages := []string{
 		"Unlocked account",
@@ -195,7 +195,7 @@ Passphrase: {{.InputLine "foobar"}}
 		"=0x289d485d9771714cce91d3393d764e1311907acc",
 	}
 	for _, m := range wantMessages {
-		if !strings.Contains(gotrust.stderrText(), m) {
+		if !strings.Contains(gotrust.StderrText(), m) {
 			t.Errorf("stderr text does not contain %q", m)
 		}
 	}
@@ -207,7 +207,7 @@ func TestUnlockFlagPasswordFile(t *testing.T) {
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--dev",
 		"--password", "testdata/passwords.txt", "--unlock", "0,2",
 		"js", "testdata/empty.js")
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 
 	wantMessages := []string{
 		"Unlocked account",
@@ -215,7 +215,7 @@ func TestUnlockFlagPasswordFile(t *testing.T) {
 		"=0x289d485d9771714cce91d3393d764e1311907acc",
 	}
 	for _, m := range wantMessages {
-		if !strings.Contains(gotrust.stderrText(), m) {
+		if !strings.Contains(gotrust.StderrText(), m) {
 			t.Errorf("stderr text does not contain %q", m)
 		}
 	}
@@ -226,8 +226,8 @@ func TestUnlockFlagPasswordFileWrongPassword(t *testing.T) {
 	gotrust := runGotrust(t,
 		"--datadir", datadir, "--nat", "none", "--nodiscover", "--dev",
 		"--password", "testdata/wrong-passwords.txt", "--unlock", "0,2")
-	defer gotrust.expectExit()
-	gotrust.expect(`
+	defer gotrust.ExpectExit()
+	gotrust.Expect(`
 Fatal: Failed to unlock account 0 (could not decrypt key with given passphrase)
 `)
 }
@@ -238,14 +238,14 @@ func TestUnlockFlagAmbiguous(t *testing.T) {
 		"--keystore", store, "--nat", "none", "--nodiscover", "--dev",
 		"--unlock", "f466859ead1932d743d622cb74fc058882e8648a",
 		"js", "testdata/empty.js")
-	defer gotrust.expectExit()
+	defer gotrust.ExpectExit()
 
 	// Helper for the expect template, returns absolute keystore path.
-	gotrust.setTemplateFunc("keypath", func(file string) string {
+	gotrust.SetTemplateFunc("keypath", func(file string) string {
 		abs, _ := filepath.Abs(filepath.Join(store, file))
 		return abs
 	})
-	gotrust.expect(`
+	gotrust.Expect(`
 Unlocking account f466859ead1932d743d622cb74fc058882e8648a | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "foobar"}}
@@ -257,14 +257,14 @@ Your passphrase unlocked keystore://{{keypath "1"}}
 In order to avoid this warning, you need to remove the following duplicate key files:
    keystore://{{keypath "2"}}
 `)
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 
 	wantMessages := []string{
 		"Unlocked account",
 		"=0xf466859ead1932d743d622cb74fc058882e8648a",
 	}
 	for _, m := range wantMessages {
-		if !strings.Contains(gotrust.stderrText(), m) {
+		if !strings.Contains(gotrust.StderrText(), m) {
 			t.Errorf("stderr text does not contain %q", m)
 		}
 	}
@@ -275,14 +275,14 @@ func TestUnlockFlagAmbiguousWrongPassword(t *testing.T) {
 	gotrust := runGotrust(t,
 		"--keystore", store, "--nat", "none", "--nodiscover", "--dev",
 		"--unlock", "f466859ead1932d743d622cb74fc058882e8648a")
-	defer gotrust.expectExit()
+	defer gotrust.ExpectExit()
 
 	// Helper for the expect template, returns absolute keystore path.
-	gotrust.setTemplateFunc("keypath", func(file string) string {
+	gotrust.SetTemplateFunc("keypath", func(file string) string {
 		abs, _ := filepath.Abs(filepath.Join(store, file))
 		return abs
 	})
-	gotrust.expect(`
+	gotrust.Expect(`
 Unlocking account f466859ead1932d743d622cb74fc058882e8648a | Attempt 1/3
 !! Unsupported terminal, password will be echoed.
 Passphrase: {{.InputLine "wrong"}}
@@ -292,5 +292,5 @@ Multiple key files exist for address f466859ead1932d743d622cb74fc058882e8648a:
 Testing your passphrase against all of them...
 Fatal: None of the listed files could be unlocked.
 `)
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 }

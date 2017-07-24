@@ -17,21 +17,25 @@
 package main
 
 import (
+	"context"
 	"crypto/ecdsa"
 	"fmt"
 	"io/ioutil"
+	"math/big"
 	"os"
 	"os/signal"
 	"runtime"
 	"strconv"
 	"strings"
 	"syscall"
+	"time"
 
 	"github.com/trust-tech/go-trustmachine/accounts"
 	"github.com/trust-tech/go-trustmachine/accounts/keystore"
 	"github.com/trust-tech/go-trustmachine/cmd/utils"
 	"github.com/trust-tech/go-trustmachine/common"
 	"github.com/trust-tech/go-trustmachine/console"
+	"github.com/trust-tech/go-trustmachine/contracts/ens"
 	"github.com/trust-tech/go-trustmachine/crypto"
 	"github.com/trust-tech/go-trustmachine/entrustclient"
 	"github.com/trust-tech/go-trustmachine/internal/debug"
@@ -40,6 +44,7 @@ import (
 	"github.com/trust-tech/go-trustmachine/p2p"
 	"github.com/trust-tech/go-trustmachine/p2p/discover"
 	"github.com/trust-tech/go-trustmachine/params"
+	"github.com/trust-tech/go-trustmachine/rpc"
 	"github.com/trust-tech/go-trustmachine/swarm"
 	bzzapi "github.com/trust-tech/go-trustmachine/swarm/api"
 	"gopkg.in/urfave/cli.v1"
@@ -87,14 +92,22 @@ var (
 		Name:  "swap",
 		Usage: "Swarm SWAP enabled (default false)",
 	}
+	SwarmSwapAPIFlag = cli.StringFlag{
+		Name:  "swap-api",
+		Usage: "URL of the Trustmachine API provider to use to settle SWAP payments",
+	}
 	SwarmSyncEnabledFlag = cli.BoolTFlag{
 		Name:  "sync",
 		Usage: "Swarm Syncing enabled (default true)",
 	}
-	EntrustAPIFlag = cli.StringFlag{
-		Name:  "entrustapi",
-		Usage: "URL of the Trustmachine API provider",
+	EnsAPIFlag = cli.StringFlag{
+		Name:  "ens-api",
+		Usage: "URL of the Trustmachine API provider to use for ENS record lookups",
 		Value: node.DefaultIPCEndpoint("gotrust"),
+	}
+	EnsAddrFlag = cli.StringFlag{
+		Name:  "ens-addr",
+		Usage: "ENS contract address (default is detected as testnet or mainnet using --ens-api)",
 	}
 	SwarmApiFlag = cli.StringFlag{
 		Name:  "bzzapi",
@@ -124,6 +137,12 @@ var (
 	CorsStringFlag = cli.StringFlag{
 		Name:  "corsdomain",
 		Usage: "Domain on which to send Access-Control-Allow-Origin header (multiple domains can be supplied separated by a ',')",
+	}
+
+	// the following flags are deprecated and should be removed in the future
+	DeprecatedEntrustAPIFlag = cli.StringFlag{
+		Name:  "entrustapi",
+		Usage: "DEPRECATED: please use --ens-api and --swap-api",
 	}
 )
 
@@ -249,9 +268,11 @@ Cleans database of corrupted entries.
 		utils.PasswordFileFlag,
 		// bzzd-specific flags
 		CorsStringFlag,
-		EntrustAPIFlag,
+		EnsAPIFlag,
+		EnsAddrFlag,
 		SwarmConfigPathFlag,
 		SwarmSwapEnabledFlag,
+		SwarmSwapAPIFlag,
 		SwarmSyncEnabledFlag,
 		SwarmListenAddrFlag,
 		SwarmPortFlag,
@@ -265,6 +286,8 @@ Cleans database of corrupted entries.
 		SwarmUploadDefaultPath,
 		SwarmUpFromStdinFlag,
 		SwarmUploadMimeType,
+		//deprecated flags
+		DeprecatedEntrustAPIFlag,
 	}
 	app.Flags = append(app.Flags, debug.Flags...)
 	app.Before = func(ctx *cli.Context) error {
@@ -299,6 +322,11 @@ func version(ctx *cli.Context) error {
 }
 
 func bzzd(ctx *cli.Context) error {
+	// exit if the deprecated --entrustapi flag is set
+	if ctx.GlobalString(DeprecatedEntrustAPIFlag.Name) != "" {
+		utils.Fatalf("--entrustapi is no longer a valid command line flag, please use --ens-api and/or --swap-api.")
+	}
+
 	cfg := defaultNodeConfig
 	utils.SetNodeConfig(ctx, &cfg)
 	stack, err := node.New(&cfg)
@@ -333,6 +361,38 @@ func bzzd(ctx *cli.Context) error {
 	return nil
 }
 
+// detectEnsAddr determines the ENS contract address by getting both the
+// version and genesis hash using the client and matching them to either
+// mainnet or testnet addresses
+func detectEnsAddr(client *rpc.Client) (common.Address, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+
+	var version string
+	if err := client.CallContext(ctx, &version, "net_version"); err != nil {
+		return common.Address{}, err
+	}
+
+	block, err := entrustclient.NewClient(client).BlockByNumber(ctx, big.NewInt(0))
+	if err != nil {
+		return common.Address{}, err
+	}
+
+	switch {
+
+	case version == "1" && block.Hash() == params.MainnetGenesisHash:
+		log.Info("using Mainnet ENS contract address", "addr", ens.MainNetAddress)
+		return ens.MainNetAddress, nil
+
+	case version == "3" && block.Hash() == params.TestnetGenesisHash:
+		log.Info("using Testnet ENS contract address", "addr", ens.TestNetAddress)
+		return ens.TestNetAddress, nil
+
+	default:
+		return common.Address{}, fmt.Errorf("unknown version and genesis hash: %s %s", version, block.Hash())
+	}
+}
+
 func registerBzzService(ctx *cli.Context, stack *node.Node) {
 	prvkey := getAccount(ctx, stack)
 
@@ -356,20 +416,48 @@ func registerBzzService(ctx *cli.Context, stack *node.Node) {
 	swapEnabled := ctx.GlobalBool(SwarmSwapEnabledFlag.Name)
 	syncEnabled := ctx.GlobalBoolT(SwarmSyncEnabledFlag.Name)
 
-	entrustapi := ctx.GlobalString(EntrustAPIFlag.Name)
+	swapapi := ctx.GlobalString(SwarmSwapAPIFlag.Name)
+	if swapEnabled && swapapi == "" {
+		utils.Fatalf("SWAP is enabled but --swap-api is not set")
+	}
+
+	ensapi := ctx.GlobalString(EnsAPIFlag.Name)
+	ensAddr := ctx.GlobalString(EnsAddrFlag.Name)
+
 	cors := ctx.GlobalString(CorsStringFlag.Name)
 
 	boot := func(ctx *node.ServiceContext) (node.Service, error) {
-		var client *entrustclient.Client
-		if len(entrustapi) > 0 {
-			client, err = entrustclient.Dial(entrustapi)
+		var swapClient *entrustclient.Client
+		if swapapi != "" {
+			log.Info("connecting to SWAP API", "url", swapapi)
+			swapClient, err = entrustclient.Dial(swapapi)
 			if err != nil {
-				utils.Fatalf("Can't connect: %v", err)
+				return nil, fmt.Errorf("error connecting to SWAP API %s: %s", swapapi, err)
 			}
-		} else {
-			swapEnabled = false
 		}
-		return swarm.NewSwarm(ctx, client, bzzconfig, swapEnabled, syncEnabled, cors)
+
+		var ensClient *entrustclient.Client
+		if ensapi != "" {
+			log.Info("connecting to ENS API", "url", ensapi)
+			client, err := rpc.Dial(ensapi)
+			if err != nil {
+				return nil, fmt.Errorf("error connecting to ENS API %s: %s", ensapi, err)
+			}
+			ensClient = entrustclient.NewClient(client)
+
+			if ensAddr != "" {
+				bzzconfig.EnsRoot = common.HexToAddress(ensAddr)
+			} else {
+				ensAddr, err := detectEnsAddr(client)
+				if err == nil {
+					bzzconfig.EnsRoot = ensAddr
+				} else {
+					log.Warn(fmt.Sprintf("could not determine ENS contract address, using default %s", bzzconfig.EnsRoot), "err", err)
+				}
+			}
+		}
+
+		return swarm.NewSwarm(ctx, swapClient, ensClient, bzzconfig, swapEnabled, syncEnabled, cors)
 	}
 	if err := stack.Register(boot); err != nil {
 		utils.Fatalf("Failed to register the Swarm service: %v", err)

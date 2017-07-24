@@ -47,15 +47,15 @@ func TestConsoleWelcome(t *testing.T) {
 		"console")
 
 	// Gather all the infos the welcome message needs to contain
-	gotrust.setTemplateFunc("goos", func() string { return runtime.GOOS })
-	gotrust.setTemplateFunc("goarch", func() string { return runtime.GOARCH })
-	gotrust.setTemplateFunc("gover", runtime.Version)
-	gotrust.setTemplateFunc("gotrustver", func() string { return params.Version })
-	gotrust.setTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
-	gotrust.setTemplateFunc("apis", func() string { return ipcAPIs })
+	gotrust.SetTemplateFunc("goos", func() string { return runtime.GOOS })
+	gotrust.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
+	gotrust.SetTemplateFunc("gover", runtime.Version)
+	gotrust.SetTemplateFunc("gotrustver", func() string { return params.Version })
+	gotrust.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
+	gotrust.SetTemplateFunc("apis", func() string { return ipcAPIs })
 
 	// Verify the actual welcome message to the required template
-	gotrust.expect(`
+	gotrust.Expect(`
 Welcome to the Gotrust JavaScript console!
 
 instance: Gotrust/v{{gotrustver}}/{{goos}}-{{goarch}}/{{gover}}
@@ -66,7 +66,7 @@ at block: 0 ({{niltime}})
 
 > {{.InputLine "exit"}}
 `)
-	gotrust.expectExit()
+	gotrust.ExpectExit()
 }
 
 // Tests that a console can be attached to a running node via various means.
@@ -90,8 +90,8 @@ func TestIPCAttachWelcome(t *testing.T) {
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
 	testAttachWelcome(t, gotrust, "ipc:"+ipc, ipcAPIs)
 
-	gotrust.interrupt()
-	gotrust.expectExit()
+	gotrust.Interrupt()
+	gotrust.ExpectExit()
 }
 
 func TestHTTPAttachWelcome(t *testing.T) {
@@ -104,8 +104,8 @@ func TestHTTPAttachWelcome(t *testing.T) {
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
 	testAttachWelcome(t, gotrust, "http://localhost:"+port, httpAPIs)
 
-	gotrust.interrupt()
-	gotrust.expectExit()
+	gotrust.Interrupt()
+	gotrust.ExpectExit()
 }
 
 func TestWSAttachWelcome(t *testing.T) {
@@ -119,29 +119,29 @@ func TestWSAttachWelcome(t *testing.T) {
 	time.Sleep(2 * time.Second) // Simple way to wait for the RPC endpoint to open
 	testAttachWelcome(t, gotrust, "ws://localhost:"+port, httpAPIs)
 
-	gotrust.interrupt()
-	gotrust.expectExit()
+	gotrust.Interrupt()
+	gotrust.ExpectExit()
 }
 
 func testAttachWelcome(t *testing.T, gotrust *testgotrust, endpoint, apis string) {
 	// Attach to a running gotrust note and terminate immediately
 	attach := runGotrust(t, "attach", endpoint)
-	defer attach.expectExit()
-	attach.stdin.Close()
+	defer attach.ExpectExit()
+	attach.CloseStdin()
 
 	// Gather all the infos the welcome message needs to contain
-	attach.setTemplateFunc("goos", func() string { return runtime.GOOS })
-	attach.setTemplateFunc("goarch", func() string { return runtime.GOARCH })
-	attach.setTemplateFunc("gover", runtime.Version)
-	attach.setTemplateFunc("gotrustver", func() string { return params.Version })
-	attach.setTemplateFunc("trustbase", func() string { return gotrust.Trustbase })
-	attach.setTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
-	attach.setTemplateFunc("ipc", func() bool { return strings.HasPrefix(endpoint, "ipc") })
-	attach.setTemplateFunc("datadir", func() string { return gotrust.Datadir })
-	attach.setTemplateFunc("apis", func() string { return apis })
+	attach.SetTemplateFunc("goos", func() string { return runtime.GOOS })
+	attach.SetTemplateFunc("goarch", func() string { return runtime.GOARCH })
+	attach.SetTemplateFunc("gover", runtime.Version)
+	attach.SetTemplateFunc("gotrustver", func() string { return params.Version })
+	attach.SetTemplateFunc("trustbase", func() string { return gotrust.Trustbase })
+	attach.SetTemplateFunc("niltime", func() string { return time.Unix(0, 0).Format(time.RFC1123) })
+	attach.SetTemplateFunc("ipc", func() bool { return strings.HasPrefix(endpoint, "ipc") })
+	attach.SetTemplateFunc("datadir", func() string { return gotrust.Datadir })
+	attach.SetTemplateFunc("apis", func() string { return apis })
 
 	// Verify the actual welcome message to the required template
-	attach.expect(`
+	attach.Expect(`
 Welcome to the Gotrust JavaScript console!
 
 instance: Gotrust/v{{gotrustver}}/{{goos}}-{{goarch}}/{{gover}}
@@ -152,7 +152,7 @@ at block: 0 ({{niltime}}){{if ipc}}
 
 > {{.InputLine "exit" }}
 `)
-	attach.expectExit()
+	attach.ExpectExit()
 }
 
 // trulyRandInt generates a crypto random integer used by the console tests to

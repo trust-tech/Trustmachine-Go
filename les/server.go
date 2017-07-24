@@ -32,6 +32,7 @@ import (
 	"github.com/trust-tech/go-trustmachine/light"
 	"github.com/trust-tech/go-trustmachine/log"
 	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p/discv5"
 	"github.com/trust-tech/go-trustmachine/rlp"
 	"github.com/trust-tech/go-trustmachine/trie"
 )
@@ -41,17 +42,24 @@ type LesServer struct {
 	fcManager       *flowcontrol.ClientManager // nil if our node is client only
 	fcCostStats     *requestCostStats
 	defParams       *flowcontrol.ServerParams
+	lesTopic        discv5.Topic
+	quitSync        chan struct{}
 	stopped         bool
 }
 
 func NewLesServer(entrust *entrust.Trustmachine, config *entrust.Config) (*LesServer, error) {
-	pm, err := NewProtocolManager(entrust.BlockChain().Config(), false, config.NetworkId, entrust.EventMux(), entrust.Engine(), entrust.BlockChain(), entrust.TxPool(), entrust.ChainDb(), nil, nil)
+	quitSync := make(chan struct{})
+	pm, err := NewProtocolManager(entrust.BlockChain().Config(), false, config.NetworkId, entrust.EventMux(), entrust.Engine(), newPeerSet(), entrust.BlockChain(), entrust.TxPool(), entrust.ChainDb(), nil, nil, quitSync, new(sync.WaitGroup))
 	if err != nil {
 		return nil, err
 	}
 	pm.blockLoop()
 
-	srv := &LesServer{protocolManager: pm}
+	srv := &LesServer{
+		protocolManager: pm,
+		quitSync:        quitSync,
+		lesTopic:        lesTopic(entrust.BlockChain().Genesis().Hash()),
+	}
 	pm.server = srv
 
 	srv.defParams = &flowcontrol.ServerParams{
@@ -69,7 +77,14 @@ func (s *LesServer) Protocols() []p2p.Protocol {
 
 // Start starts the LES server
 func (s *LesServer) Start(srvr *p2p.Server) {
-	s.protocolManager.Start(srvr)
+	s.protocolManager.Start()
+	go func() {
+		logger := log.New("topic", s.lesTopic)
+		logger.Info("Starting topic registration")
+		defer logger.Info("Terminated topic registration")
+
+		srvr.DiscV5.RegisterTopic(s.lesTopic, s.quitSync)
+	}()
 }
 
 // Stop stops the LES service

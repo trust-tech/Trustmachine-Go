@@ -43,7 +43,11 @@ func (ctx *ServiceContext) OpenDatabase(name string, cache int, handles int) (en
 	if ctx.config.DataDir == "" {
 		return entrustdb.NewMemDatabase()
 	}
-	return entrustdb.NewLDBDatabase(ctx.config.resolvePath(name), cache, handles)
+	db, err := entrustdb.NewLDBDatabase(ctx.config.resolvePath(name), cache, handles)
+	if err != nil {
+		return nil, err
+	}
+	return db, nil
 }
 
 // ResolvePath resolves a user path into the data directory if that was relative

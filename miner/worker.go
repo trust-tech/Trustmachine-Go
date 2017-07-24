@@ -274,7 +274,7 @@ func (self *worker) wait() {
 				}
 				go self.mux.Post(core.NewMinedBlockEvent{Block: block})
 			} else {
-				work.state.Commit(self.config.IsEIP158(block.Number()))
+				work.state.CommitTo(self.chainDb, self.config.IsEIP158(block.Number()))
 				stat, err := self.chain.WriteBlock(block)
 				if err != nil {
 					log.Error("Failed writing block to chain", "err", err)
@@ -293,9 +293,7 @@ func (self *worker) wait() {
 				// check if canon block and write transactions
 				if stat == core.CanonStatTy {
 					// This puts transactions in a extra db for rpc
-					core.WriteTransactions(self.chainDb, block)
-					// store the receipts
-					core.WriteReceipts(self.chainDb, work.receipts)
+					core.WriteTxLookupEntries(self.chainDb, block)
 					// Write map map bloom filters
 					core.WriteMipmapBloom(self.chainDb, block.NumberU64(), work.receipts)
 					// implicit by posting ChainHeadEvent

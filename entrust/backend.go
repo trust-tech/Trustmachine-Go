@@ -59,11 +59,10 @@ type LesServer interface {
 type Trustmachine struct {
 	chainConfig *params.ChainConfig
 	// Channel for shutting down the service
-	shutdownChan  chan bool // Channel for shutting down the trustmachine
-	stopDbUpgrade func()    // stop chain db sequential key upgrade
+	shutdownChan  chan bool    // Channel for shutting down the trustmachine
+	stopDbUpgrade func() error // stop chain db sequential key upgrade
 	// Handlers
 	txPool          *core.TxPool
-	txMu            sync.Mutex
 	blockchain      *core.BlockChain
 	protocolManager *ProtocolManager
 	lesServer       LesServer
@@ -88,7 +87,6 @@ type Trustmachine struct {
 
 func (s *Trustmachine) AddLesServer(ls LesServer) {
 	s.lesServer = ls
-	s.protocolManager.lesServer = ls
 }
 
 // New creates a new Trustmachine object (including the
@@ -105,7 +103,7 @@ func New(ctx *node.ServiceContext, config *Config) (*Trustmachine, error) {
 	if err != nil {
 		return nil, err
 	}
-	stopDbUpgrade := upgradeSequentialKeys(chainDb)
+	stopDbUpgrade := upgradeDeduplicateData(chainDb)
 	chainConfig, genesisHash, genesisErr := core.SetupGenesisBlock(chainDb, config.Genesis)
 	if _, ok := genesisErr.(*params.ConfigCompatError); genesisErr != nil && !ok {
 		return nil, genesisErr
@@ -201,10 +199,13 @@ func makeExtraData(extra []byte) []byte {
 // CreateDB creates the chain database.
 func CreateDB(ctx *node.ServiceContext, config *Config, name string) (entrustdb.Database, error) {
 	db, err := ctx.OpenDatabase(name, config.DatabaseCache, config.DatabaseHandles)
+	if err != nil {
+		return nil, err
+	}
 	if db, ok := db.(*entrustdb.LDBDatabase); ok {
 		db.Meter("entrust/db/chaindata/")
 	}
-	return db, err
+	return db, nil
 }
 
 // CreateConsensusEngine creates the required type of consensus engine instance for an Trustmachine service

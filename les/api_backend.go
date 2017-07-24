@@ -24,13 +24,13 @@ import (
 	"github.com/trust-tech/go-trustmachine/common"
 	"github.com/trust-tech/go-trustmachine/common/math"
 	"github.com/trust-tech/go-trustmachine/core"
+	"github.com/trust-tech/go-trustmachine/core/state"
 	"github.com/trust-tech/go-trustmachine/core/types"
 	"github.com/trust-tech/go-trustmachine/core/vm"
 	"github.com/trust-tech/go-trustmachine/entrust/downloader"
 	"github.com/trust-tech/go-trustmachine/entrust/gasprice"
 	"github.com/trust-tech/go-trustmachine/entrustdb"
 	"github.com/trust-tech/go-trustmachine/event"
-	"github.com/trust-tech/go-trustmachine/internal/entrustapi"
 	"github.com/trust-tech/go-trustmachine/light"
 	"github.com/trust-tech/go-trustmachine/params"
 	"github.com/trust-tech/go-trustmachine/rpc"
@@ -70,12 +70,12 @@ func (b *LesApiBackend) BlockByNumber(ctx context.Context, blockNr rpc.BlockNumb
 	return b.GetBlock(ctx, header.Hash())
 }
 
-func (b *LesApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (entrustapi.State, *types.Header, error) {
+func (b *LesApiBackend) StateAndHeaderByNumber(ctx context.Context, blockNr rpc.BlockNumber) (*state.StateDB, *types.Header, error) {
 	header, err := b.HeaderByNumber(ctx, blockNr)
 	if header == nil || err != nil {
 		return nil, nil, err
 	}
-	return light.NewLightState(light.StateTrieID(header), b.entrust.odr), header, nil
+	return light.NewState(ctx, header, b.entrust.odr), header, nil
 }
 
 func (b *LesApiBackend) GetBlock(ctx context.Context, blockHash common.Hash) (*types.Block, error) {
@@ -90,18 +90,10 @@ func (b *LesApiBackend) GetTd(blockHash common.Hash) *big.Int {
 	return b.entrust.blockchain.GetTdByHash(blockHash)
 }
 
-func (b *LesApiBackend) GetEVM(ctx context.Context, msg core.Message, state entrustapi.State, header *types.Header, vmCfg vm.Config) (*vm.EVM, func() error, error) {
-	stateDb := state.(*light.LightState).Copy()
-	addr := msg.From()
-	from, err := stateDb.GetOrNewStateObject(ctx, addr)
-	if err != nil {
-		return nil, nil, err
-	}
-	from.SetBalance(math.MaxBig256)
-
-	vmstate := light.NewVMState(ctx, stateDb)
+func (b *LesApiBackend) GetEVM(ctx context.Context, msg core.Message, state *state.StateDB, header *types.Header, vmCfg vm.Config) (*vm.EVM, func() error, error) {
+	state.SetBalance(msg.From(), math.MaxBig256)
 	context := core.NewEVMContext(msg, header, b.entrust.blockchain, nil)
-	return vm.NewEVM(context, vmstate, b.entrust.chainConfig, vmCfg), vmstate.Error, nil
+	return vm.NewEVM(context, state, b.entrust.chainConfig, vmCfg), state.Error, nil
 }
 
 func (b *LesApiBackend) SendTx(ctx context.Context, signedTx *types.Transaction) error {

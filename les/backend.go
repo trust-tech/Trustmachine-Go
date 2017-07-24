@@ -19,6 +19,7 @@ package les
 
 import (
 	"fmt"
+	"sync"
 	"time"
 
 	"github.com/trust-tech/go-trustmachine/accounts"
@@ -38,6 +39,7 @@ import (
 	"github.com/trust-tech/go-trustmachine/log"
 	"github.com/trust-tech/go-trustmachine/node"
 	"github.com/trust-tech/go-trustmachine/p2p"
+	"github.com/trust-tech/go-trustmachine/p2p/discv5"
 	"github.com/trust-tech/go-trustmachine/params"
 	rpc "github.com/trust-tech/go-trustmachine/rpc"
 )
@@ -49,9 +51,13 @@ type LightTrustmachine struct {
 	// Channel for shutting down the service
 	shutdownChan chan bool
 	// Handlers
+	peers           *peerSet
 	txPool          *light.TxPool
 	blockchain      *light.LightChain
 	protocolManager *ProtocolManager
+	serverPool      *serverPool
+	reqDist         *requestDistributor
+	retriever       *retrieveManager
 	// DB interfaces
 	chainDb entrustdb.Database // Block chain database
 
@@ -63,6 +69,9 @@ type LightTrustmachine struct {
 
 	networkId     uint64
 	netRPCService *entrustapi.PublicNetAPI
+
+	quitSync chan struct{}
+	wg       sync.WaitGroup
 }
 
 func New(ctx *node.ServiceContext, config *entrust.Config) (*LightTrustmachine, error) {
@@ -76,20 +85,26 @@ func New(ctx *node.ServiceContext, config *entrust.Config) (*LightTrustmachine, 
 	}
 	log.Info("Initialised chain configuration", "config", chainConfig)
 
-	odr := NewLesOdr(chainDb)
-	relay := NewLesTxRelay()
+	peers := newPeerSet()
+	quitSync := make(chan struct{})
+
 	entrust := &LightTrustmachine{
-		odr:            odr,
-		relay:          relay,
-		chainDb:        chainDb,
 		chainConfig:    chainConfig,
+		chainDb:        chainDb,
 		eventMux:       ctx.EventMux,
+		peers:          peers,
+		reqDist:        newRequestDistributor(peers, quitSync),
 		accountManager: ctx.AccountManager,
 		engine:         entrust.CreateConsensusEngine(ctx, config, chainConfig, chainDb),
 		shutdownChan:   make(chan bool),
 		networkId:      config.NetworkId,
 	}
-	if entrust.blockchain, err = light.NewLightChain(odr, entrust.chainConfig, entrust.engine, entrust.eventMux); err != nil {
+
+	entrust.relay = NewLesTxRelay(peers, entrust.reqDist)
+	entrust.serverPool = newServerPool(chainDb, quitSync, &entrust.wg)
+	entrust.retriever = newRetrieveManager(peers, entrust.reqDist, entrust.serverPool)
+	entrust.odr = NewLesOdr(chainDb, entrust.retriever)
+	if entrust.blockchain, err = light.NewLightChain(entrust.odr, entrust.chainConfig, entrust.engine, entrust.eventMux); err != nil {
 		return nil, err
 	}
 	// Rewind the chain in case of an incompatible config upgrade.
@@ -100,13 +115,9 @@ func New(ctx *node.ServiceContext, config *entrust.Config) (*LightTrustmachine, 
 	}
 
 	entrust.txPool = light.NewTxPool(entrust.chainConfig, entrust.eventMux, entrust.blockchain, entrust.relay)
-	lightSync := config.SyncMode == downloader.LightSync
-	if entrust.protocolManager, err = NewProtocolManager(entrust.chainConfig, lightSync, config.NetworkId, entrust.eventMux, entrust.engine, entrust.blockchain, nil, chainDb, odr, relay); err != nil {
+	if entrust.protocolManager, err = NewProtocolManager(entrust.chainConfig, true, config.NetworkId, entrust.eventMux, entrust.engine, entrust.peers, entrust.blockchain, nil, chainDb, entrust.odr, entrust.relay, quitSync, &entrust.wg); err != nil {
 		return nil, err
 	}
-	relay.ps = entrust.protocolManager.peers
-	relay.reqDist = entrust.protocolManager.reqDist
-
 	entrust.ApiBackend = &LesApiBackend{entrust, nil}
 	gpoParams := config.GPO
 	if gpoParams.Default == nil {
@@ -114,6 +125,10 @@ func New(ctx *node.ServiceContext, config *entrust.Config) (*LightTrustmachine, 
 	}
 	entrust.ApiBackend.gpo = gasprice.NewOracle(entrust.ApiBackend, gpoParams)
 	return entrust, nil
+}
+
+func lesTopic(genesisHash common.Hash) discv5.Topic {
+	return discv5.Topic("LES@" + common.Bytes2Hex(genesisHash.Bytes()[0:8]))
 }
 
 type LightDummyAPI struct{}
@@ -188,7 +203,8 @@ func (s *LightTrustmachine) Protocols() []p2p.Protocol {
 func (s *LightTrustmachine) Start(srvr *p2p.Server) error {
 	log.Warn("Light client mode is an experimental feature")
 	s.netRPCService = entrustapi.NewPublicNetAPI(srvr, s.networkId)
-	s.protocolManager.Start(srvr)
+	s.serverPool.start(srvr, lesTopic(s.blockchain.Genesis().Hash()))
+	s.protocolManager.Start()
 	return nil
 }
 

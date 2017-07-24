@@ -97,14 +97,14 @@ func TestCustomGenesis(t *testing.T) {
 		if err := ioutil.WriteFile(json, []byte(tt.genesis), 0600); err != nil {
 			t.Fatalf("test %d: failed to write genesis file: %v", i, err)
 		}
-		runGotrust(t, "--datadir", datadir, "init", json).cmd.Wait()
+		runGotrust(t, "--datadir", datadir, "init", json).WaitExit()
 
 		// Query the custom genesis block
 		gotrust := runGotrust(t,
 			"--datadir", datadir, "--maxpeers", "0", "--port", "0",
 			"--nodiscover", "--nat", "none", "--ipcdisable",
 			"--exec", tt.query, "console")
-		gotrust.expectRegexp(tt.result)
-		gotrust.expectExit()
+		gotrust.ExpectRegexp(tt.result)
+		gotrust.ExpectExit()
 	}
 }

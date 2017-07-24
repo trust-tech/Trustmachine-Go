@@ -22,15 +22,6 @@ import (
 	"github.com/trust-tech/go-trustmachine/common"
 )
 
-// TestNetDAOForkBlock is the block number where the DAO hard-fork commences on
-// the Trustmachine test network. It's enforced nil since it was decided not to do a
-// testnet transition.
-var TestNetDAOForkBlock *big.Int
-
-// MainNetDAOForkBlock is the block number where the DAO hard-fork commences on
-// the Trustmachine main network.
-var MainNetDAOForkBlock = big.NewInt(1920000)
-
 // DAOForkBlockExtra is the block header extra-data field to set for the DAO fork
 // point and a number of consecutive blocks to allow fast/light syncers to correctly
 // pick the side they want  ("dao-hard-fork").

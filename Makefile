@@ -2,7 +2,7 @@
 # with Go source code. If you know what GOPATH is then you probably
 # don't need to bother with make.
 
-.PHONY: gotrust android ios gotrust-cross evm all test clean
+.PHONY: gotrust android ios gotrust-cross swarm evm all test clean
 .PHONY: gotrust-linux gotrust-linux-386 gotrust-linux-amd64 gotrust-linux-mips64 gotrust-linux-mips64le
 .PHONY: gotrust-linux-arm gotrust-linux-arm-5 gotrust-linux-arm-6 gotrust-linux-arm-7 gotrust-linux-arm64
 .PHONY: gotrust-darwin gotrust-darwin-386 gotrust-darwin-amd64
@@ -15,6 +15,11 @@ gotrust:
 	build/env.sh go run build/ci.go install ./cmd/gotrust
 	@echo "Done building."
 	@echo "Run \"$(GOBIN)/gotrust\" to launch gotrust."
+
+swarm:
+	build/env.sh go run build/ci.go install ./cmd/swarm
+	@echo "Done building."
+	@echo "Run \"$(GOBIN)/swarm\" to launch swarm."
 
 evm:
 	build/env.sh go run build/ci.go install ./cmd/evm
