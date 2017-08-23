@@ -1,6 +1,6 @@
 ## Trustmachine Go
 
-TrustMachine project aims to provide with global trust service and it is built upon trust-tech's golang implementation of Ethereum protocol.
+TrustMachine project aims to provide with global dececntralized trust service it will be implemented in a typed functional language based on the Blackpaper.Currently we are choosing ethereum's golang implementation of Yellowpaper to secure the Testnet of Trustmachine. Another implementation to secure the network is parity's rust implementation. We will switch to mainnet once the testnet is stabalized with our own implementation.
 
 [![API Reference](
 https://camo.githubusercontent.com/915b7be44ada53c290eb157634330494ebe3e30a/68747470733a2f2f676f646f632e6f72672f6769746875622e636f6d2f676f6c616e672f6764646f3f7374617475732e737667
