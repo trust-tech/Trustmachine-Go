@@ -1,4 +1,4 @@
-## Trustmachine Go
+## Trustmachine Go -- Testnet
 
 TrustMachine project aims to provide with global dececntralized trust service and it will be implemented in a typed functional language based on the Blackpaper. Currently we are choosing ethereum's golang implementation of Yellowpaper to secure the Testnet of Trustmachine. Another implementation to secure the network is parity's rust implementation. We will switch to mainnet once the testnet is stabalized with our own implementation.
 
